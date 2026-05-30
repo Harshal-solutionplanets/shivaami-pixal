@@ -12,6 +12,7 @@ import {
   BrainCircuit,
   Camera,
   PhoneCall,
+  Calculator,
   Banknote,
   ShieldCheck,
 } from "lucide-react";
@@ -90,7 +91,7 @@ export default function Hero() {
 
             {/* CTAs */}
             <div
-              className="flex flex-col sm:flex-row gap-3 mb-12"
+              className="flex flex-col sm:flex-row flex-wrap gap-3 mb-12"
               style={{ animation: "slide-up 0.7s 0.3s ease both" }}
             >
               <Link
@@ -102,6 +103,16 @@ export default function Hero() {
               >
                 Shop Pixel 10 Series
                 <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/marketplace#savings-calculator"
+                className={cn(
+                  buttonVariants({ size: "lg" }),
+                  "rounded-full px-8 h-13 text-base font-semibold gap-2 bg-emerald-600 hover:bg-emerald-700 text-white shadow-xl shadow-emerald-600/25 inline-flex items-center transition-all duration-200 hover:-translate-y-0.5"
+                )}
+              >
+                <Calculator className="w-4 h-4" />
+                Check Your Savings
               </Link>
               <a
                 href="https://wa.me/919022223600?text=Hi%20Shivaami%2C%20I%27m%20interested%20in%20Google%20Pixel%20for%20Business"

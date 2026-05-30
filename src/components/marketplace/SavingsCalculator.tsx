@@ -113,6 +113,7 @@ export default function SavingsCalculator() {
 
   return (
     <section
+      id="savings-calculator"
       ref={ref as React.RefObject<HTMLDivElement>}
       className="bg-[#F0F4FF] py-16 px-4"
     >
