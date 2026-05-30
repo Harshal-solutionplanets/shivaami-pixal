@@ -44,10 +44,10 @@ function validate(form: OrderForm): Partial<Record<keyof OrderForm, string>> {
     errors.email = "Valid email is required";
   if (!form.phone.trim() || !/^\d{10}$/.test(form.phone.replace(/\s/g, "")))
     errors.phone = "10-digit phone number required";
-  if (form.gstNumber.trim()) {
-    if (!/^[0-9]{2}[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}[a-zA-Z0-9]{1}[zZ]{1}[a-zA-Z0-9]{1}$/.test(form.gstNumber.trim())) {
-      errors.gstNumber = "Invalid 15-digit GST number format";
-    }
+  if (!form.gstNumber.trim()) {
+    errors.gstNumber = "GST number is required";
+  } else if (!/^[0-9]{2}[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}[a-zA-Z0-9]{1}[zZ]{1}[a-zA-Z0-9]{1}$/.test(form.gstNumber.trim())) {
+    errors.gstNumber = "Invalid 15-digit GST number format";
   }
   if (!form.city.trim())
     errors.city = "Delivery city is required";
@@ -289,7 +289,7 @@ export default function OrderFormModal({
                 disabled={submitting}
               />
               <Field
-                label="GST Number (optional)"
+                label="GST Number *"
                 value={form.gstNumber}
                 onChange={(v) => update("gstNumber", v)}
                 error={errors.gstNumber}
@@ -320,31 +320,6 @@ export default function OrderFormModal({
             </div>
           </div>
 
-          {/* Payment mode */}
-          <div>
-            <h3 className="text-sm font-semibold text-foreground mb-4">
-              Payment Method
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <PaymentOption
-                selected={form.paymentMode === "invoice"}
-                onSelect={() => update("paymentMode", "invoice")}
-                disabled={submitting}
-                title="Request Invoice"
-                description="Our team sends a Razorpay payment link to your email. Ideal for GST invoicing."
-                badge="Recommended for B2B"
-              />
-              <PaymentOption
-                selected={form.paymentMode === "pay_now"}
-                onSelect={() => update("paymentMode", "pay_now")}
-                disabled={submitting}
-                title="Pay Now"
-                description="Instant payment via Razorpay — UPI, cards, net banking, or EMI."
-                badge="Instant confirmation"
-              />
-            </div>
-          </div>
-
           {/* API error */}
           {apiError && (
             <div className="bg-destructive/10 text-destructive text-sm rounded-xl px-4 py-3">
@@ -368,10 +343,8 @@ export default function OrderFormModal({
                 <span className="animate-spin inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full" />
                 Processing…
               </>
-            ) : form.paymentMode === "invoice" ? (
-              "Request Invoice & Confirm Order"
             ) : (
-              `Pay ${formatInr(summary.retailTotal)} via Razorpay`
+              "Confirm Order"
             )}
           </button>
 
