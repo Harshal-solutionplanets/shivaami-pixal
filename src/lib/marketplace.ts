@@ -30,15 +30,19 @@ export function getDiscountPct(totalQty: number): number {
 export const CORPORATE_PRICING_NOTE =
   "Corporate Pricing. All prices are including 18% GST input credit.";
 
+export const SAVINGS_VALUES: Record<string, { oneAssist: number; extWarranty: number }> = {
+  "pixel-10a": { oneAssist: 5419, extWarranty: 4440 },
+  "pixel-10": { oneAssist: 8059, extWarranty: 6516 },
+  "pixel-10-pro-xl": { oneAssist: 13819, extWarranty: 11136 },
+  "pixel-10-pro-fold": { oneAssist: 19619, extWarranty: 15756 },
+};
+
 export function calcItemBenefitValue(slug: string): number {
-  const base =
-    BENEFIT_VALUES.protection_plan +
-    BENEFIT_VALUES.zero_touch_deployment +
-    BENEFIT_VALUES.cloud_storage +
-    BENEFIT_VALUES.ai_workshops +
-    BENEFIT_VALUES.dedicated_support;
-  return PRO_SLUGS.has(slug) ? base + BENEFIT_VALUES.google_ai_pro : base;
+  const itemSavings = SAVINGS_VALUES[slug];
+  if (!itemSavings) return 0;
+  return itemSavings.oneAssist + itemSavings.extWarranty;
 }
+
 
 export interface SavingsSummary {
   retailTotal: number;

@@ -18,15 +18,15 @@ const DELAY_CLASSES = ["delay-100", "delay-200", "delay-300", "delay-400"];
 
 export default function ProductOrderCard({ product, index }: ProductOrderCardProps) {
   const { ref, isVisible } = useInView(0.1);
-  const { items, addItem, updateQuantity, updateColor } = useCart();
+  const { items, addItem, removeItem, updateQuantity, updateColor } = useCart();
 
   const [selectedColor, setSelectedColor] = useState<ProductColor>(
     product.colors[0]
   );
-  const [qty, setQty] = useState(1);
 
   const cartItem = items.find((i) => i.productSlug === product.slug);
   const isInCart = !!cartItem;
+  const displayQty = cartItem?.quantity ?? 0;
   const unitPrice = RETAIL_PRICES[product.slug] ?? 0;
 
   function handleColorChange(color: ProductColor) {
@@ -37,23 +37,40 @@ export default function ProductOrderCard({ product, index }: ProductOrderCardPro
   }
 
   function handleQtyChange(delta: number) {
-    const newQty = Math.max(1, qty + delta);
-    setQty(newQty);
     if (isInCart) {
-      updateQuantity(product.slug, newQty);
+      const newQty = cartItem.quantity + delta;
+      if (newQty <= 0) {
+        removeItem(product.slug);
+      } else {
+        updateQuantity(product.slug, newQty);
+      }
+    } else {
+      if (delta > 0) {
+        addItem({
+          productSlug: product.slug,
+          productName: product.name,
+          color: selectedColor,
+          quantity: 1,
+          unitPriceInr: unitPrice,
+          accentBg: product.accentBg,
+          badge: product.badge,
+        });
+      }
     }
   }
 
   function handleAddToOrder() {
-    addItem({
-      productSlug: product.slug,
-      productName: product.name,
-      color: selectedColor,
-      quantity: qty,
-      unitPriceInr: unitPrice,
-      accentBg: product.accentBg,
-      badge: product.badge,
-    });
+    if (!isInCart) {
+      addItem({
+        productSlug: product.slug,
+        productName: product.name,
+        color: selectedColor,
+        quantity: 1,
+        unitPriceInr: unitPrice,
+        accentBg: product.accentBg,
+        badge: product.badge,
+      });
+    }
   }
 
   return (
@@ -119,14 +136,14 @@ export default function ProductOrderCard({ product, index }: ProductOrderCardPro
             <div className="flex items-center gap-0 rounded-full border border-border/80 overflow-hidden bg-white shadow-sm">
               <button
                 onClick={() => handleQtyChange(-1)}
-                disabled={qty <= 1}
+                disabled={displayQty <= 0}
                 className="w-9 h-9 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/40 disabled:opacity-40 disabled:cursor-not-allowed transition-colors text-lg font-light"
                 aria-label="Decrease quantity"
               >
                 −
               </button>
               <span className="w-9 text-center text-sm font-bold text-foreground tabular-nums">
-                {qty}
+                {displayQty}
               </span>
               <button
                 onClick={() => handleQtyChange(1)}
@@ -141,17 +158,18 @@ export default function ProductOrderCard({ product, index }: ProductOrderCardPro
           {/* Add to order button */}
           <button
             onClick={handleAddToOrder}
+            disabled={isInCart}
             className={cn(
               "w-full py-3 px-5 rounded-full font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2",
               isInCart
-                ? "bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100"
+                ? "bg-emerald-50 text-emerald-700 border border-emerald-200 cursor-default"
                 : "bg-primary text-white hover:bg-[#1A73E8]"
             )}
           >
             {isInCart ? (
               <>
                 <span>✓</span>
-                <span>Added — Update Order</span>
+                <span>Added to Order</span>
               </>
             ) : (
               "Add to Order"

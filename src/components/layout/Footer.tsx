@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Mail, Phone, MessageCircle } from "lucide-react";
+import Logo from "@/components/ui/Logo";
 
 const productLinks = [
   { label: "Pixel 10a", href: "/products/pixel-10a" },
@@ -23,23 +24,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              {/* Shivaami */}
-              <div className="flex items-center gap-1.5">
-                
-                <span className="font-bold text-background text-lg">Shivaami</span>
-              </div>
-              {/* Separator */}
-              <span className="text-background/40 text-sm select-none">×</span>
-              {/* Tax Print */}
-              <div className="flex items-center gap-1.5">
-                
-                <div className="flex flex-col leading-none gap-px">
-                  <span className="font-bold text-[#E85520] text-base leading-none">Tax Print</span>
-                  <span className="text-[9px] text-background/50 leading-none">Since 1962</span>
-                </div>
-              </div>
-            </div>
+            <Logo light className="mb-4" />
             <p className="text-sm leading-relaxed mb-4 text-background/60">
               Mumbai&apos;s authorized Google Partner for Pixel SMB plans. Empowering
               businesses with the best of Google AI.
@@ -132,7 +117,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-background/10 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-background/40">
-            © {new Date().getFullYear()} Shivaami × Tax Print. All rights reserved.
+            © {new Date().getFullYear()} Tax Print in association with Shivaami. All rights reserved.
           </p>
           <p className="text-xs text-background/40">
             Google and Pixel are trademarks of Google LLC. Shivaami is an

@@ -12,12 +12,14 @@ import {
   BrainCircuit,
   Camera,
   PhoneCall,
+  Banknote,
+  ShieldCheck,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#FFF9F0] pt-16">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#FFF9F0] pt-24">
 
       {/* ── Large animated blobs ── */}
       <div
@@ -173,6 +175,34 @@ export default function Hero() {
                 <div>
                   <p className="text-xs font-bold text-foreground leading-none">Gemini AI</p>
                   <p className="text-xs text-muted-foreground mt-0.5">Built right in</p>
+                </div>
+              </div>
+
+              {/* GST Benefits — middle-left */}
+              <div
+                className="absolute top-[28%] -left-8 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-float-slow"
+                style={{ animationDelay: "1.5s" }}
+              >
+                <div className="w-9 h-9 rounded-xl bg-[#E6F4EA] flex items-center justify-center shrink-0">
+                  <Banknote className="w-4 h-4 text-[#137333]" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-foreground leading-none">SMB Pricing</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">with GST benefits</p>
+                </div>
+              </div>
+
+              {/* 1 Year Extended warranty — lower-left */}
+              <div
+                className="absolute top-[62%] -left-8 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-float"
+                style={{ animationDelay: "0.4s" }}
+              >
+                <div className="w-9 h-9 rounded-xl bg-[#E0F7FA] flex items-center justify-center shrink-0">
+                  <ShieldCheck className="w-4 h-4 text-[#00838F]" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-foreground leading-none">1 Year Extended warranty</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Total 2 years of manufacturer warranty coverage</p>
                 </div>
               </div>
 

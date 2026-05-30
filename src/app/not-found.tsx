@@ -47,7 +47,7 @@ export default function NotFound() {
   return (
     <>
       <Navbar />
-      <main className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#F5F0FF] pt-16">
+      <main className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#F5F0FF] pt-24">
 
         {/* Background blobs */}
         <div

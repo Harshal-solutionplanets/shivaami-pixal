@@ -46,6 +46,11 @@ function validate(form: OrderForm): Partial<Record<keyof OrderForm, string>> {
     errors.phone = "10-digit phone number required";
   if (!form.city.trim())
     errors.city = "Delivery city is required";
+  if (!form.gstNumber.trim()) {
+    errors.gstNumber = "GST number is required";
+  } else if (!/^[0-9]{2}[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}[a-zA-Z0-9]{1}[zZ]{1}[a-zA-Z0-9]{1}$/.test(form.gstNumber.trim())) {
+    errors.gstNumber = "Invalid 15-digit GST number format";
+  }
   return errors;
 }
 
@@ -284,9 +289,10 @@ export default function OrderFormModal({
                 disabled={submitting}
               />
               <Field
-                label="GST Number (optional)"
+                label="GST Number *"
                 value={form.gstNumber}
                 onChange={(v) => update("gstNumber", v)}
+                error={errors.gstNumber}
                 placeholder="27AAPFU0939F1ZV"
                 disabled={submitting}
               />
@@ -310,31 +316,6 @@ export default function OrderFormModal({
                 rows={3}
                 disabled={submitting}
                 className="w-full rounded-xl border border-border/80 px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none disabled:opacity-60"
-              />
-            </div>
-          </div>
-
-          {/* Payment mode */}
-          <div>
-            <h3 className="text-sm font-semibold text-foreground mb-4">
-              Payment Method
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <PaymentOption
-                selected={form.paymentMode === "invoice"}
-                onSelect={() => update("paymentMode", "invoice")}
-                disabled={submitting}
-                title="Request Invoice"
-                description="Our team sends a Razorpay payment link to your email. Ideal for GST invoicing."
-                badge="Recommended for B2B"
-              />
-              <PaymentOption
-                selected={form.paymentMode === "pay_now"}
-                onSelect={() => update("paymentMode", "pay_now")}
-                disabled={submitting}
-                title="Pay Now"
-                description="Instant payment via Razorpay — UPI, cards, net banking, or EMI."
-                badge="Instant confirmation"
               />
             </div>
           </div>
@@ -424,56 +405,5 @@ function Field({
       />
       {error && <p className="mt-1 text-xs text-destructive">{error}</p>}
     </div>
-  );
-}
-
-// Payment option card
-interface PaymentOptionProps {
-  selected: boolean;
-  onSelect: () => void;
-  disabled?: boolean;
-  title: string;
-  description: string;
-  badge: string;
-}
-
-function PaymentOption({
-  selected,
-  onSelect,
-  disabled,
-  title,
-  description,
-  badge,
-}: PaymentOptionProps) {
-  return (
-    <button
-      type="button"
-      onClick={onSelect}
-      disabled={disabled}
-      className={cn(
-        "text-left p-4 rounded-2xl border-2 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed",
-        selected
-          ? "border-primary bg-primary/5"
-          : "border-border/60 hover:border-primary/40"
-      )}
-    >
-      <div className="flex items-center gap-2 mb-1.5">
-        <span
-          className={cn(
-            "w-4 h-4 rounded-full border-2 shrink-0",
-            selected
-              ? "border-primary bg-primary"
-              : "border-muted-foreground"
-          )}
-        />
-        <span className="text-sm font-semibold text-foreground">{title}</span>
-      </div>
-      <p className="text-xs text-muted-foreground pl-6 leading-relaxed">
-        {description}
-      </p>
-      <span className="mt-2 ml-6 inline-block text-[10px] font-semibold bg-accent text-foreground/70 px-2 py-0.5 rounded-full">
-        {badge}
-      </span>
-    </button>
   );
 }

@@ -8,6 +8,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X, Phone, ChevronDown, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { products } from "@/lib/products";
+import Logo from "@/components/ui/Logo";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -54,24 +55,10 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            {/* Shivaami */}
-            <div className="flex items-center gap-1.5">
-              
-              <span className="font-bold text-lg text-foreground tracking-tight">Shivaami</span>
-            </div>
-            {/* Separator */}
-            <span className="text-muted-foreground text-sm select-none">×</span>
-            {/* Tax Print */}
-            <div className="flex items-center gap-1.5">
-              
-              <div className="flex flex-col leading-none gap-px">
-                <span className="font-bold text-base text-[#E85520] tracking-tight leading-none">Tax Print</span>
-                <span className="hidden sm:block text-[9px] text-muted-foreground leading-none">Since 1962</span>
-              </div>
-            </div>
+          <Link href="/" className="flex items-center group">
+            <Logo />
           </Link>
 
           {/* Desktop Nav */}
@@ -167,10 +154,7 @@ export default function Navbar() {
             </SheetTrigger>
             <SheetContent side="right" className="w-72 p-6">
               <div className="flex items-center justify-between mb-8">
-                <div className="flex flex-col gap-0.5">
-                  <span className="font-bold text-base leading-none">Shivaami</span>
-                  <span className="text-xs text-muted-foreground leading-none">× Tax Print</span>
-                </div>
+                <Logo className="scale-90 origin-left" />
                 <Button
                   variant="ghost"
                   size="icon"

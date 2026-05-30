@@ -4,16 +4,94 @@ import { useInView } from "@/hooks/useInView";
 import { Check, X, BadgePercent, Shield, Rocket, Star, Sparkles } from "lucide-react";
 
 const rows = [
-  { feature: "2-Year Protection (water + theft)", business: true, retail: false },
-  { feature: "1-Year Extended Warranty", business: true, retail: false },
-  { feature: "Zero-Touch Deployment", business: true, retail: false },
-  { feature: "Corporate / SMB Pricing", business: true, retail: false },
-  { feature: "AI Productivity Workshops", business: true, retail: false },
-  { feature: "Free Google Cloud Storage", business: true, retail: false },
-  { feature: "Dedicated Account Manager", business: true, retail: false },
-  { feature: "Standard 1-Year Warranty", business: true, retail: true },
-  { feature: "Google AI Features (Gemini)", business: true, retail: true },
-  { feature: "7 Years OS + Security Updates", business: true, retail: true },
+  {
+    feature: "Exclusive Corporate Bulk Pricing",
+    business: true,
+    retail: false,
+  },
+  {
+    feature: "GST Input credit 18% Benefits",
+    business: true,
+    retail: false,
+  },
+  {
+    feature: "2-Year Protection Plan for (Accidental & Liquid Damage)",
+    business: true,
+    retail: false,
+    isFree: true,
+  },
+  {
+    feature: "1-Year Extended Warranty (Total 2 years)",
+    business: true,
+    retail: false,
+    isFree: true,
+  },
+  {
+    feature: "Doorstep Pan India Pickup & Drop for repairs (for 2 years)",
+    business: true,
+    retail: false,
+    isFree: true,
+  },
+  {
+    feature: "Paperless Claims Support (no paper work at the time of claim)",
+    business: true,
+    retail: false,
+  },
+  {
+    feature: "Zero Hidden Cost (Full Invoice value coverage No access fees No depreciation on claims)",
+    business: true,
+    retail: false,
+  },
+  {
+    feature: "Mobile Device Management (MDM)",
+    business: true,
+    retail: false,
+  },
+  {
+    feature: "AI Productivity Workshops",
+    business: true,
+    retail: false,
+  },
+  {
+    feature: "Google AI Features (Gemini)",
+    business: true,
+    retail: true,
+  },
+  {
+    feature: "Google One Benefits",
+    business: true,
+    retail: true,
+  },
+  {
+    feature: "Google AI Pro",
+    business: true,
+    retail: true,
+  },
+  {
+    feature: "Fitbit Premium",
+    business: true,
+    retail: true,
+  },
+  {
+    feature: "YouTube Premium",
+    business: true,
+    retail: true,
+  },
+  {
+    feature: "7 Years OS + Security Updates",
+    business: true,
+    retail: true,
+  },
+  {
+    feature: "GST number Mandatory",
+    business: true,
+    retail: false,
+  },
+  {
+    feature: "Pixel SMB Advantage Plan (something that usually costs 15% of your phone's value, completely FREE at Shivaami)",
+    business: true,
+    retail: false,
+  },
 ];
 
 export default function PlanComparison() {
@@ -106,6 +184,40 @@ export default function PlanComparison() {
         <p className="text-center text-xs text-muted-foreground mt-4">
           * Benefits subject to Shivaami business plan terms and conditions.
         </p>
+
+        {/* Corporate Benefits Callout Box */}
+        <div className="mt-8 bg-white/80 border border-border/80 rounded-3xl p-6 sm:p-8 backdrop-blur shadow-sm relative overflow-hidden">
+          {/* Subtle decorative glow */}
+          <div className="absolute top-0 right-0 w-24 h-24 bg-[#FFE2D1]/45 rounded-full blur-2xl pointer-events-none" />
+          
+          <h3 className="text-base sm:text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+            <span className="bg-[#FFE2D1] text-[#A73B00] px-2 py-0.5 rounded-lg text-xs font-black tracking-wider uppercase">
+              Exclusive
+            </span>
+            <span>Corporate Benefits with Shivaami:</span>
+          </h3>
+          
+          <ul className="space-y-3 mb-5 text-sm text-foreground/80 font-medium">
+            <li className="flex items-start gap-2.5">
+              <span className="text-primary font-bold mt-0.5">•</span>
+              <span>2-Year Protection Plan covering <strong className="text-foreground font-semibold">Accidental & Liquid Damage</strong></span>
+            </li>
+            <li className="flex items-start gap-2.5">
+              <span className="text-primary font-bold mt-0.5">•</span>
+              <span>Pan India Doorstep Pickup & Drop Support for Repairs <strong className="text-foreground font-semibold">(for 2 Years)</strong></span>
+            </li>
+            <li className="flex items-start gap-2.5">
+              <span className="text-primary font-bold mt-0.5">•</span>
+              <span>1-Year Extended Warranty <strong className="text-foreground font-semibold">(Total Coverage: 2 Years)</strong></span>
+            </li>
+          </ul>
+          
+          <div className="border-t border-border/40 pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-xl">
+              These benefits that typically cost an additional <strong className="text-foreground font-semibold">15%–20%</strong>, now available absolutely <strong className="text-[#A73B00] font-black uppercase bg-[#FFE2D1] px-1.5 py-0.5 rounded">FREE</strong> with Shivaami.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
