@@ -9,19 +9,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Shivaami | Google Pixel for Business — Empower Your Team",
+  title: "TaxPrint & Shivaami | Google Pixel for Business — Empower Your Team",
   description:
     "Mumbai's authorized Google Partner for Pixel SMB plans. Get Pixel 10 series with 2-year protection, zero-touch deployment, AI workshops, and corporate pricing. Order online.",
   keywords: [
     "Google Pixel for Business",
     "Pixel 10 SMB",
     "Google Partner Mumbai",
-    "Shivaami",
+    "TaxPrint & Shivaami",
     "Pixel enterprise plan",
     "business smartphones India",
   ],
   openGraph: {
-    title: "Shivaami | Google Pixel for Business",
+    title: "TaxPrint & Shivaami | Google Pixel for Business",
     description:
       "Empower Your Team. Elevate Productivity. Mumbai's authorized Google Pixel SMB dealership.",
     type: "website",

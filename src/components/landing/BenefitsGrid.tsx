@@ -63,7 +63,7 @@ const benefits = [
     icon: Headphones,
     title: "Dedicated Business Support",
     description:
-      "A dedicated Shivaami account manager for your business. Priority response, same-day troubleshooting, and proactive care.",
+      "A dedicated TaxPrint & Shivaami account manager for your business. Priority response, same-day troubleshooting, and proactive care.",
     color: "#EDE7F6",
     iconColor: "#7C3AED",
   },
@@ -110,7 +110,7 @@ export default function BenefitsGrid() {
           className={`text-center mb-16 reveal ${isVisible ? "visible" : ""}`}
         >
           <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">
-            Shivaami Exclusive
+            TaxPrint & Shivaami Exclusive
           </p>
           <h2 className="text-3xl sm:text-5xl font-bold text-foreground mb-4">
             Everything your business needs,{" "}
@@ -118,7 +118,7 @@ export default function BenefitsGrid() {
           </h2>
           <p className="max-w-2xl mx-auto text-muted-foreground text-lg">
             The Pixel for Business plan goes far beyond just a phone. Get a
-            complete productivity ecosystem backed by Google and Shivaami.
+            complete productivity ecosystem backed by Google and TaxPrint & Shivaami.
           </p>
         </div>
 
@@ -166,7 +166,7 @@ function HeroBanner() {
             <span className="text-primary">with Gemini</span>
           </h3>
           <p className="text-[#3d3d5c]/70 mb-6 max-w-xs leading-relaxed">
-            The smartest, most protected business phone in India — available exclusively through Shivaami.
+            The smartest, most protected business phone in India — available exclusively through TaxPrint & Shivaami.
           </p>
           <Link
             href="/products"

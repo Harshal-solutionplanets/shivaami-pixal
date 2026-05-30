@@ -3,7 +3,7 @@ import Link from "next/link";
 import LoginForm from "@/components/auth/LoginForm";
 
 export const metadata: Metadata = {
-  title: "Sign In | Shivaami Pixel",
+  title: "Sign In | TaxPrint & Shivaami Pixel",
 };
 
 export default function LoginPage() {
@@ -14,10 +14,10 @@ export default function LoginPage() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2 text-foreground font-bold text-xl">
             <span className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white text-sm font-bold">S</span>
-            Shivaami
+            TaxPrint & Shivaami
           </Link>
           <h1 className="mt-6 text-2xl font-bold text-foreground">Welcome back</h1>
-          <p className="mt-1 text-muted-foreground text-sm">Sign in to your Shivaami account</p>
+          <p className="mt-1 text-muted-foreground text-sm">Sign in to your TaxPrint & Shivaami account</p>
         </div>
 
         <div className="bg-white rounded-3xl border border-border/60 shadow-xl shadow-black/5 p-8">

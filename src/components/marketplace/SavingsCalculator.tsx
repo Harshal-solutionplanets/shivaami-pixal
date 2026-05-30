@@ -50,7 +50,7 @@ const SMB_BENEFITS = [
     key: "workshops",
     title: "Exclusive AI Workshops & Support",
     description:
-      "Training and ongoing support by Google and Shivaami — Gemini Live, Call Assist, Camera Coach, and more.",
+      "Training and ongoing support by Google and TaxPrint & Shivaami — Gemini Live, Call Assist, Camera Coach, and more.",
     icon: "🎓",
   },
 ];

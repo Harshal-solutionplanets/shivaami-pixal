@@ -53,11 +53,11 @@ export default function ProductOrderCTA({ productName, ecosystemBenefits }: Prod
               <span className="text-primary">with {productName}?</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              Order through Shivaami and get exclusive business benefits not available anywhere else.
+              Order through TaxPrint & Shivaami and get exclusive business benefits not available anywhere else.
             </p>
           </div>
 
-          {/* Shivaami Benefits */}
+          {/* TaxPrint & Shivaami Benefits */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
             {shivaamiBenefits.map((benefit) => {
               const Icon = benefit.icon;

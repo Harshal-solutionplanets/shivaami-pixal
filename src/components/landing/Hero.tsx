@@ -86,7 +86,7 @@ export default function Hero() {
               Google Pixel 10 series with{" "}
               <strong className="text-foreground">2-year protection</strong>,
               zero-touch deployment, AI workshops, and exclusive SMB pricing —
-              only from Shivaami.
+              only from TaxPrint & Shivaami.
             </p>
 
             {/* CTAs */}
@@ -115,7 +115,7 @@ export default function Hero() {
                 Check Your Savings
               </Link>
               <a
-                href="https://wa.me/919022223600?text=Hi%20Shivaami%2C%20I%27m%20interested%20in%20Google%20Pixel%20for%20Business"
+                href="https://wa.me/919022223600?text=Hi%20TaxPrint & Shivaami%2C%20I%27m%20interested%20in%20Google%20Pixel%20for%20Business"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(

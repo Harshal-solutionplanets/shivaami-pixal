@@ -21,7 +21,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-2 font-bold text-foreground">
               <span className="w-7 h-7 rounded-lg bg-primary flex items-center justify-center text-white text-xs font-bold">S</span>
-              Shivaami
+              TaxPrint & Shivaami
             </Link>
             <span className="text-border/80">|</span>
             <span className="text-sm font-semibold text-muted-foreground">Admin Dashboard</span>

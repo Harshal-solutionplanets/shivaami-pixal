@@ -20,7 +20,7 @@ function ConfirmationContent() {
   const orderId = searchParams.get("order");
   const shortId = orderId ? orderId.slice(0, 8).toUpperCase() : "—";
   const waMessage = encodeURIComponent(
-    `Hi, I just placed a B2B Pixel order on Shivaami. My order ID is ${shortId}.`
+    `Hi, I just placed a B2B Pixel order on TaxPrint & Shivaami. My order ID is ${shortId}.`
   );
 
   return (
@@ -48,7 +48,7 @@ function ConfirmationContent() {
             Order Received!
           </h1>
           <p className="text-muted-foreground mb-3">
-            Thank you for choosing Shivaami for your team&apos;s Pixel upgrade.
+            Thank you for choosing TaxPrint & Shivaami for your team&apos;s Pixel upgrade.
           </p>
           {orderId && (
             <div className="inline-flex items-center gap-2 bg-muted/50 rounded-full px-4 py-2">

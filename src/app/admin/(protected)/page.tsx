@@ -6,7 +6,7 @@ import CustomersTable, { type CustomerRow } from "@/components/admin/CustomersTa
 import PhonesSoldChart from "@/components/admin/PhonesSoldChart";
 
 export const metadata: Metadata = {
-  title: "Admin Dashboard | Shivaami",
+  title: "Admin Dashboard | TaxPrint & Shivaami",
 };
 
 export const dynamic = "force-dynamic";
@@ -102,7 +102,7 @@ export default async function AdminPage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-2xl font-bold text-foreground">Overview</h1>
-        <p className="text-muted-foreground text-sm mt-1">Shivaami Pixel B2B — real-time sales data</p>
+        <p className="text-muted-foreground text-sm mt-1">TaxPrint & Shivaami Pixel B2B — real-time sales data</p>
       </div>
 
       <StatsCards stats={{ totalOrders, totalRevenuePaise, unitsSold, pendingOrders }} />

@@ -86,15 +86,15 @@ export default function Logo({ className, light = false }: LogoProps) {
       <div className={cn("w-full border-t mt-2 mb-1.5", dividerColor)} />
 
       {/* Bottom Row: In associated with shivaami */}
-      <div className="flex items-center justify-center gap-1.5 text-[11px] tracking-wide font-medium">
+      <div className="flex items-center justify-center gap-2 text-[13px] tracking-wide font-semibold mt-1">
         <span className={cn("whitespace-nowrap", subTextColor)}>In association with</span>
-        <div className="flex items-center gap-0.5">
-          {/* Shivaami Red Circle Logo */}
-          <svg viewBox="0 0 100 100" className="w-[15px] h-[15px] shrink-0">
+        <div className="flex items-center gap-1.5">
+          {/* TaxPrint & Shivaami Red Circle Logo */}
+          <svg viewBox="0 0 100 100" className="w-[20px] h-[20px] shrink-0">
             <circle cx="50" cy="50" r="45" fill="#EA4335" />
             <path d="M50,20 C35,20 32,35 42,45 C52,55 65,52 58,68 C52,80 38,78 35,70 C34,74 38,80 48,80 C62,80 68,65 58,55 C48,45 35,48 42,32 C48,20 62,22 65,30 C66,26 62,20 50,20 Z" fill="white" />
           </svg>
-          <span className="font-bold text-[#0080FF] tracking-tight leading-none whitespace-nowrap">shivaami</span>
+          <span className="font-extrabold text-[#0080FF] tracking-tight leading-none whitespace-nowrap text-[14px]">shivaami</span>
         </div>
       </div>
     </div>

@@ -88,7 +88,7 @@ const rows = [
     retail: false,
   },
   {
-    feature: "Pixel SMB Advantage Plan (something that usually costs 15% of your phone's value, completely FREE at Shivaami)",
+    feature: "Pixel SMB Advantage Plan (something that usually costs 15% of your phone's value, completely FREE at TaxPrint & Shivaami)",
     business: true,
     retail: false,
   },
@@ -110,13 +110,13 @@ export default function PlanComparison() {
         {/* Header */}
         <div ref={ref as React.RefObject<HTMLDivElement>} className={`text-center mb-16 reveal ${isVisible ? "visible" : ""}`}>
           <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">
-            Why Choose Shivaami
+            Why Choose TaxPrint & Shivaami
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Pixel for Business vs. Regular Retail
           </h2>
           <p className="max-w-xl mx-auto text-muted-foreground text-lg">
-            The Shivaami business plan gives your team far more than just a
+            The TaxPrint & Shivaami business plan gives your team far more than just a
             phone — at pricing retail can&apos;t match.
           </p>
         </div>
@@ -134,7 +134,7 @@ export default function PlanComparison() {
                   <span className="w-1.5 h-1.5 rounded-full bg-[#FBBC05]" />
                   <span className="w-1.5 h-1.5 rounded-full bg-[#34A853]" />
                 </div>
-                <span className="font-bold text-sm text-foreground">Shivaami Business</span>
+                <span className="font-bold text-sm text-foreground">TaxPrint & Shivaami Business</span>
               </div>
               <p className="text-xs text-primary font-medium">via Pixel for Business</p>
             </div>
@@ -182,7 +182,7 @@ export default function PlanComparison() {
         </div>
 
         <p className="text-center text-xs text-muted-foreground mt-4">
-          * Benefits subject to Shivaami business plan terms and conditions.
+          * Benefits subject to TaxPrint & Shivaami business plan terms and conditions.
         </p>
 
         {/* Corporate Benefits Callout Box */}
@@ -194,7 +194,7 @@ export default function PlanComparison() {
             <span className="bg-[#FFE2D1] text-[#A73B00] px-2 py-0.5 rounded-lg text-xs font-black tracking-wider uppercase">
               Exclusive
             </span>
-            <span>Corporate Benefits with Shivaami:</span>
+            <span>Corporate Benefits with TaxPrint & Shivaami:</span>
           </h3>
           
           <ul className="space-y-3 mb-5 text-sm text-foreground/80 font-medium">
@@ -214,7 +214,7 @@ export default function PlanComparison() {
           
           <div className="border-t border-border/40 pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-xl">
-              These benefits that typically cost an additional <strong className="text-foreground font-semibold">15%–20%</strong>, now available absolutely <strong className="text-[#A73B00] font-black uppercase bg-[#FFE2D1] px-1.5 py-0.5 rounded">FREE</strong> with Shivaami.
+              These benefits that typically cost an additional <strong className="text-foreground font-semibold">15%–20%</strong>, now available absolutely <strong className="text-[#A73B00] font-black uppercase bg-[#FFE2D1] px-1.5 py-0.5 rounded">FREE</strong> with TaxPrint & Shivaami.
             </p>
           </div>
         </div>

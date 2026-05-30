@@ -31,7 +31,7 @@ export default function MarketplaceClient({ products }: MarketplaceClientProps) 
           </h1>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
             Exclusive corporate pricing with 18% GST input credit, 2-year
-            protection, and AI support — only through Shivaami, Mumbai&apos;s
+            protection, and AI support — only through TaxPrint & Shivaami, Mumbai&apos;s
             authorized Google Partner.
           </p>
         </div>

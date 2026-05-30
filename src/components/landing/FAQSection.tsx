@@ -7,7 +7,7 @@ import { useInView } from "@/hooks/useInView";
 const faqs = [
   {
     q: "Why should businesses provide phones as office assets?",
-    a: "Just as companies issue laptops, providing employees with a dedicated business phone is a smart operational decision. Your IT team gets full control — enforce security policies, remotely wipe data if a device is lost, and keep personal and work data cleanly separated via Android Work Profiles. Productivity improves because employees aren't juggling two devices or mixing personal apps with work calls. From a financial standpoint, phones purchased as business assets are eligible for depreciation under Indian tax law, reducing your effective cost. Shivaami handles bulk procurement, zero-touch enrolment, and a 2-year protection plan — so the entire lifecycle is managed for you.",
+    a: "Just as companies issue laptops, providing employees with a dedicated business phone is a smart operational decision. Your IT team gets full control — enforce security policies, remotely wipe data if a device is lost, and keep personal and work data cleanly separated via Android Work Profiles. Productivity improves because employees aren't juggling two devices or mixing personal apps with work calls. From a financial standpoint, phones purchased as business assets are eligible for depreciation under Indian tax law, reducing your effective cost. TaxPrint & Shivaami handles bulk procurement, zero-touch enrolment, and a 2-year protection plan — so the entire lifecycle is managed for you.",
   },
   {
     q: "What do the AI Productivity Workshops include?",
@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "How does the 2-year protection plan work?",
-    a: "The Shivaami business protection plan covers accidental water damage and theft for 2 full years from purchase. Simply file a claim through our support team — we handle the replacement or repair process end-to-end so your team stays productive without interruption.",
+    a: "The TaxPrint & Shivaami business protection plan covers accidental water damage and theft for 2 full years from purchase. Simply file a claim through our support team — we handle the replacement or repair process end-to-end so your team stays productive without interruption.",
   },
   {
     q: "What is zero-touch deployment?",

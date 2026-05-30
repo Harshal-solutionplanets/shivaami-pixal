@@ -29,7 +29,7 @@ export default function ProductsTeaser() {
             <span className="text-primary">One business plan.</span>
           </h2>
           <p className="max-w-2xl mx-auto text-muted-foreground text-lg">
-            Every Pixel in the lineup comes with the full Shivaami business
+            Every Pixel in the lineup comes with the full TaxPrint & Shivaami business
             package — pick the right model for each role in your team.
           </p>
         </div>

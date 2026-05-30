@@ -117,10 +117,10 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-background/10 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-background/40">
-            © {new Date().getFullYear()} Tax Print in association with Shivaami. All rights reserved.
+            © {new Date().getFullYear()} Tax Print in association with TaxPrint & Shivaami. All rights reserved.
           </p>
           <p className="text-xs text-background/40">
-            Google and Pixel are trademarks of Google LLC. Shivaami is an
+            Google and Pixel are trademarks of Google LLC. TaxPrint & Shivaami is an
             authorized Google Partner.
           </p>
         </div>
