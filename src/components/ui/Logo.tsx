@@ -104,12 +104,11 @@ export default function Logo({ className, light = false }: LogoProps) {
       <div className={cn("flex items-center justify-center gap-2.5 text-[13.5px] font-medium tracking-wide", associatedTextColor)}>
         <span>In associated with</span>
         <div className="flex items-center gap-1.5">
-          {/* Shivaami Red Circle Logo */}
-          <svg viewBox="0 0 100 100" className="w-[24px] h-[24px] shrink-0">
-            <circle cx="50" cy="50" r="45" fill="#EA4335" />
-            <path d="M50,20 C35,20 32,35 42,45 C52,55 65,52 58,68 C52,80 38,78 35,70 C34,74 38,80 48,80 C62,80 68,65 58,55 C48,45 35,48 42,32 C48,20 62,22 65,30 C66,26 62,20 50,20 Z" fill="white" />
-          </svg>
-          <span className="font-extrabold text-[#0093E9] tracking-tighter leading-none text-[18px]">shivaami</span>
+          <img
+            src="/assets/shivaami.png"
+            alt="Shivaami"
+            className={cn("h-6 w-auto object-contain", light && "bg-white px-2 py-0.5 rounded")}
+          />
         </div>
       </div>
     </div>
