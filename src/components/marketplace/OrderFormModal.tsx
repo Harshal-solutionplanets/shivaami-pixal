@@ -19,6 +19,7 @@ interface OrderForm {
   phone: string;
   gstNumber: string;
   city: string;
+  shippingAddress: string;
   notes: string;
   paymentMode: "pay_now" | "invoice";
 }
@@ -30,8 +31,9 @@ const initialForm: OrderForm = {
   phone: "",
   gstNumber: "",
   city: "",
+  shippingAddress: "",
   notes: "",
-  paymentMode: "invoice",
+  paymentMode: "pay_now",
 };
 
 function validate(form: OrderForm): Partial<Record<keyof OrderForm, string>> {
@@ -51,6 +53,8 @@ function validate(form: OrderForm): Partial<Record<keyof OrderForm, string>> {
   }
   if (!form.city.trim())
     errors.city = "Delivery city is required";
+  if (!form.shippingAddress.trim())
+    errors.shippingAddress = "Shipping address is required";
   return errors;
 }
 
@@ -304,19 +308,27 @@ export default function OrderFormModal({
                 placeholder="Mumbai"
                 disabled={submitting}
               />
-            </div>
-            <div className="mt-4">
-              <label className="block text-xs font-medium text-foreground mb-1.5">
-                Additional Notes
-              </label>
-              <textarea
-                value={form.notes}
-                onChange={(e) => update("notes", e.target.value)}
-                placeholder="Delivery instructions, special requirements..."
-                rows={3}
+              <Field
+                label="Shipping Address *"
+                value={form.shippingAddress}
+                onChange={(v) => update("shippingAddress", v)}
+                error={errors.shippingAddress}
+                placeholder="mohan building, opp my cafe, kurla,400070"
                 disabled={submitting}
-                className="w-full rounded-xl border border-border/80 px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none disabled:opacity-60"
               />
+              <div>
+                <label className="block text-xs font-medium text-foreground mb-1.5">
+                  Additional Notes
+                </label>
+                <textarea
+                  value={form.notes}
+                  onChange={(e) => update("notes", e.target.value)}
+                  placeholder="Delivery instructions, special requirements..."
+                  rows={3}
+                  disabled={submitting}
+                  className="w-full rounded-xl border border-border/80 px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none disabled:opacity-60"
+                />
+              </div>
             </div>
           </div>
 

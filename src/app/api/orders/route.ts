@@ -20,6 +20,7 @@ interface OrderRequestBody {
     phone: string;
     gstNumber?: string;
     city: string;
+    shippingAddress: string;
     notes?: string;
     paymentMode: "pay_now" | "invoice";
   };
@@ -114,6 +115,7 @@ export async function POST(req: NextRequest) {
       phone: form.phone,
       gst_number: form.gstNumber || null,
       city: form.city,
+      shipping_address: form.shippingAddress,
       notes: form.notes || null,
       payment_mode: form.paymentMode,
       status:
@@ -172,6 +174,7 @@ export async function POST(req: NextRequest) {
           <tr><td style="padding:4px 0;color:#5F6368">Email</td><td><a href="mailto:${form.email}" style="color:#4285F4">${form.email}</a></td></tr>
           <tr><td style="padding:4px 0;color:#5F6368">Phone</td><td><a href="tel:${form.phone}" style="color:#4285F4">${form.phone}</a></td></tr>
           <tr><td style="padding:4px 0;color:#5F6368">City</td><td>${form.city}</td></tr>
+          <tr><td style="padding:4px 0;color:#5F6368">Shipping Address</td><td>${form.shippingAddress}</td></tr>
           ${form.gstNumber ? `<tr><td style="padding:4px 0;color:#5F6368">GST</td><td>${form.gstNumber}</td></tr>` : ""}
           <tr><td style="padding:4px 0;color:#5F6368">Payment</td><td>${form.paymentMode === "pay_now" ? "✅ Paid via Razorpay" : "📄 Invoice Requested"}</td></tr>
           ${form.notes ? `<tr><td style="padding:4px 0;color:#5F6368">Notes</td><td>${form.notes}</td></tr>` : ""}
@@ -207,6 +210,13 @@ export async function POST(req: NextRequest) {
           <span style="font-size:14px">Total (${summary.discountPct}% bulk discount applied)</span>
           <strong style="font-size:16px;display:block;margin-top:4px">${formatInr(totalInr)}</strong>
         </div>
+        <h2 style="font-size:15px;margin:28px 0 12px">Delivery Details</h2>
+        <table style="width:100%;font-size:14px;margin-bottom:24px">
+          <tr><td style="padding:4px 0;color:#5F6368;width:140px">Company</td><td><strong>${form.companyName}</strong></td></tr>
+          <tr><td style="padding:4px 0;color:#5F6368">City</td><td>${form.city}</td></tr>
+          <tr><td style="padding:4px 0;color:#5F6368">Shipping Address</td><td>${form.shippingAddress}</td></tr>
+          ${form.notes ? `<tr><td style="padding:4px 0;color:#5F6368">Notes</td><td>${form.notes}</td></tr>` : ""}
+        </table>
         <h2 style="font-size:15px;margin:28px 0 12px">What happens next?</h2>
         <ol style="padding-left:20px;font-size:14px;color:#5F6368;line-height:1.8">
           <li>Our business team will call you within 2 hours (Mon–Sat, 10 am–7 pm IST)</li>
