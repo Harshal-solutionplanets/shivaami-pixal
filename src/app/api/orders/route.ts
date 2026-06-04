@@ -21,6 +21,7 @@ interface OrderRequestBody {
     gstNumber?: string;
     city: string;
     shippingAddress: string;
+    billingAddress: string;
     notes?: string;
     paymentMode: "pay_now" | "invoice";
   };
@@ -116,6 +117,7 @@ export async function POST(req: NextRequest) {
       gst_number: form.gstNumber || null,
       city: form.city,
       shipping_address: form.shippingAddress,
+      billing_address: form.billingAddress,
       notes: form.notes || null,
       payment_mode: form.paymentMode,
       status:
@@ -175,6 +177,7 @@ export async function POST(req: NextRequest) {
           <tr><td style="padding:4px 0;color:#5F6368">Phone</td><td><a href="tel:${form.phone}" style="color:#4285F4">${form.phone}</a></td></tr>
           <tr><td style="padding:4px 0;color:#5F6368">City</td><td>${form.city}</td></tr>
           <tr><td style="padding:4px 0;color:#5F6368">Shipping Address</td><td>${form.shippingAddress}</td></tr>
+          <tr><td style="padding:4px 0;color:#5F6368">Billing Address</td><td>${form.billingAddress}</td></tr>
           ${form.gstNumber ? `<tr><td style="padding:4px 0;color:#5F6368">GST</td><td>${form.gstNumber}</td></tr>` : ""}
           <tr><td style="padding:4px 0;color:#5F6368">Payment</td><td>${form.paymentMode === "pay_now" ? "✅ Paid via Razorpay" : "📄 Invoice Requested"}</td></tr>
           ${form.notes ? `<tr><td style="padding:4px 0;color:#5F6368">Notes</td><td>${form.notes}</td></tr>` : ""}
@@ -215,6 +218,7 @@ export async function POST(req: NextRequest) {
           <tr><td style="padding:4px 0;color:#5F6368;width:140px">Company</td><td><strong>${form.companyName}</strong></td></tr>
           <tr><td style="padding:4px 0;color:#5F6368">City</td><td>${form.city}</td></tr>
           <tr><td style="padding:4px 0;color:#5F6368">Shipping Address</td><td>${form.shippingAddress}</td></tr>
+          <tr><td style="padding:4px 0;color:#5F6368">Billing Address</td><td>${form.billingAddress}</td></tr>
           ${form.notes ? `<tr><td style="padding:4px 0;color:#5F6368">Notes</td><td>${form.notes}</td></tr>` : ""}
         </table>
         <h2 style="font-size:15px;margin:28px 0 12px">What happens next?</h2>

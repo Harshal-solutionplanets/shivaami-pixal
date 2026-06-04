@@ -18,7 +18,7 @@ export default async function AdminPage() {
   const [ordersResult, profilesResult, itemsResult] = await Promise.all([
     supabase
       .from("orders")
-      .select("id, user_id, status, total_amount, created_at")
+      .select("id, user_id, status, total_amount, created_at, company_name, contact_name, email, phone, gst_number, city, shipping_address, billing_address")
       .order("created_at", { ascending: false })
       .limit(100),
     supabase
@@ -26,7 +26,7 @@ export default async function AdminPage() {
       .select("id, full_name, company_name, phone, created_at"),
     supabase
       .from("order_items")
-      .select("order_id, product_slug, product_name, quantity"),
+      .select("order_id, product_slug, product_name, color_name, quantity"),
   ]);
 
   const orders = ordersResult.data ?? [];
@@ -63,16 +63,22 @@ export default async function AdminPage() {
   }
 
   const orderRows: OrderRow[] = orders.map((o) => {
-    const profile = profileMap.get(o.user_id);
     const orderItems = itemsByOrderId.get(o.id) ?? [];
-    const productNames = [...new Set(orderItems.map((i) => i.product_name))].join(", ");
-    const qty = orderItems.reduce((s, i) => s + (i.quantity ?? 0), 0);
     return {
       id: o.id,
-      customerName: profile?.full_name ?? "—",
-      customerEmail: emailMap.get(o.user_id) ?? "—",
-      products: productNames || "—",
-      quantity: qty,
+      companyName: o.company_name,
+      contactName: o.contact_name,
+      email: o.email,
+      phone: o.phone,
+      gstNumber: o.gst_number,
+      city: o.city,
+      shippingAddress: o.shipping_address,
+      billingAddress: o.billing_address,
+      items: orderItems.map((i) => ({
+        productName: i.product_name,
+        colorName: i.color_name,
+        quantity: i.quantity ?? 0,
+      })),
       totalAmount: o.total_amount,
       status: o.status,
       createdAt: o.created_at,

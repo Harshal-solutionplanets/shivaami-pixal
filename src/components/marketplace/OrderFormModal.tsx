@@ -20,6 +20,7 @@ interface OrderForm {
   gstNumber: string;
   city: string;
   shippingAddress: string;
+  billingAddress: string;
   notes: string;
   paymentMode: "pay_now" | "invoice";
 }
@@ -32,6 +33,7 @@ const initialForm: OrderForm = {
   gstNumber: "",
   city: "",
   shippingAddress: "",
+  billingAddress: "",
   notes: "",
   paymentMode: "pay_now",
 };
@@ -55,6 +57,8 @@ function validate(form: OrderForm): Partial<Record<keyof OrderForm, string>> {
     errors.city = "Delivery city is required";
   if (!form.shippingAddress.trim())
     errors.shippingAddress = "Shipping address is required";
+  if (!form.billingAddress.trim())
+    errors.billingAddress = "Billing address is required";
   return errors;
 }
 
@@ -316,7 +320,15 @@ export default function OrderFormModal({
                 placeholder="mohan building, opp my cafe, kurla,400070"
                 disabled={submitting}
               />
-              <div>
+              <Field
+                label="Billing Address *"
+                value={form.billingAddress}
+                onChange={(v) => update("billingAddress", v)}
+                error={errors.billingAddress}
+                placeholder="Same as shipping address or new"
+                disabled={submitting}
+              />
+              <div className="sm:col-span-2">
                 <label className="block text-xs font-medium text-foreground mb-1.5">
                   Additional Notes
                 </label>
