@@ -22,6 +22,9 @@ export const metadata: Metadata = {
     "Pixel enterprise plan",
     "business smartphones India",
   ],
+  verification: {
+    google: "sA4SjdwnPnOtrC_ptY4t4uteq98Kl2EPWGvdRopTQBo",
+  },
   openGraph: {
     title: "tax print & shivaami | Google Pixel for Business",
     description:
@@ -39,7 +42,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <head>
-        <meta name="google-site-verification" content="sA4SjdwnPnOtrC_ptY4t4uteq98Kl2EPWGvdRopTQBo" />
         {/* Google Tag Manager */}
         <Script
           id="gtm"
