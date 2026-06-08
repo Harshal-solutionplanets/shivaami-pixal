@@ -117,7 +117,7 @@ export default function PlanComparison() {
             Pixel for Business vs. Regular Retail
           </h2>
           <p className="max-w-xl mx-auto text-muted-foreground text-lg">
-            The <BrandText /> business plan gives your team far more than just a
+            The <BrandText />{" "}business plan gives your team far more than just a
             phone — at pricing retail can&apos;t match.
           </p>
         </div>
@@ -135,7 +135,7 @@ export default function PlanComparison() {
                   <span className="w-1.5 h-1.5 rounded-full bg-[#FBBC05]" />
                   <span className="w-1.5 h-1.5 rounded-full bg-[#34A853]" />
                 </div>
-                <span className="font-bold text-sm text-foreground"><BrandText /> Business</span>
+                <span className="font-bold text-sm text-foreground"><BrandText />{" "}Business</span>
               </div>
               <p className="text-xs text-primary font-medium">via Pixel for Business</p>
             </div>
@@ -183,7 +183,7 @@ export default function PlanComparison() {
         </div>
 
         <p className="text-center text-xs text-muted-foreground mt-4">
-          * Benefits subject to <BrandText /> business plan terms and conditions.
+          * Benefits subject to <BrandText />{" "}business plan terms and conditions.
         </p>
 
         {/* Corporate Benefits Callout Box */}

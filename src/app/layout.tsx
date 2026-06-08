@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
+import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -38,8 +39,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <head>
+        <meta name="google-site-verification" content="sA4SjdwnPnOtrC_ptY4t4uteq98Kl2EPWGvdRopTQBo" />
         {/* Google Tag Manager */}
-        <script
+        <Script
+          id="gtm"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -52,7 +56,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         {/* End Google Tag Manager */}
         {/* Meta Pixel Code */}
-        <script
+        <Script
+          id="meta-pixel"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
 !function(f,b,e,v,n,t,s)

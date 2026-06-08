@@ -209,4 +209,5 @@ html {
   color: #1ca0dc !important;
   font-family: "Vilane", sans-serif !important;
   font-weight: 200 !important;
+  text-transform: lowercase !important;
 }
