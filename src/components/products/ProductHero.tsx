@@ -7,6 +7,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import ProductColorSelector from "@/components/products/ProductColorSelector";
 import type { Product, ProductColor } from "@/lib/products";
+import BrandText from "@/components/ui/BrandText";
 
 interface ProductHeroProps {
   product: Product;
@@ -45,7 +46,7 @@ export default function ProductHero({ product }: ProductHeroProps) {
               "rounded-full bg-primary hover:bg-primary/90 text-white gap-1.5 text-xs"
             )}
           >
-            Order from TaxPrint & Shivaami
+            Order from <BrandText />
             <ArrowRight className="w-3 h-3" />
           </Link>
         </div>

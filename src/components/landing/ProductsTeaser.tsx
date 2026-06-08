@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
-import { ArrowRight} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import BrandText from "@/components/ui/BrandText";
 import { useInView } from "@/hooks/useInView";
 import { products } from "@/lib/products";
 import ProductCard from "@/components/products/ProductCard";
@@ -29,7 +30,7 @@ export default function ProductsTeaser() {
             <span className="text-primary">One business plan.</span>
           </h2>
           <p className="max-w-2xl mx-auto text-muted-foreground text-lg">
-            Every Pixel in the lineup comes with the full TaxPrint & Shivaami business
+            Every Pixel in the lineup comes with the full <BrandText /> business
             package — pick the right model for each role in your team.
           </p>
         </div>

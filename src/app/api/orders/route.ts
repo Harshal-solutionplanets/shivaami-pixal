@@ -160,7 +160,7 @@ export async function POST(req: NextRequest) {
   // Send emails — never block the response if emails fail
   const shortId = order.id.slice(0, 8).toUpperCase();
   const resend = new Resend(process.env.RESEND_API_KEY);
-  const from = "Shivaami Pixel <onboarding@resend.dev>";
+  const from = "shivaami Pixel <onboarding@resend.dev>";
 
   const shivamiHtml = `
     <div style="font-family:Inter,sans-serif;max-width:600px;margin:0 auto;color:#202124">
@@ -207,7 +207,7 @@ export async function POST(req: NextRequest) {
       </div>
       <div style="background:white;padding:32px;border:1px solid #DADCE0;border-top:none;border-radius:0 0 12px 12px">
         <p style="font-size:15px">Hi <strong>${form.contactName}</strong>,</p>
-        <p style="font-size:14px;color:#5F6368">Thank you for choosing Shivaami for your team's Google Pixel upgrade. Here's a summary of your order:</p>
+        <p style="font-size:14px;color:#5F6368">Thank you for choosing <span style="color:#1ca0dc;font-family:'Vilane',sans-serif;font-weight:200">shivaami</span> for your team's Google Pixel upgrade. Here's a summary of your order:</p>
         ${itemsTableHtml(items)}
         <div style="margin-top:20px;padding:16px;background:#CEEAD6;border-radius:8px">
           <span style="font-size:14px">Total (${summary.discountPct}% bulk discount applied)</span>
@@ -233,7 +233,7 @@ export async function POST(req: NextRequest) {
           <a href="https://wa.me/919022223600?text=Hi%2C%20my%20B2B%20order%20ID%20is%20${shortId}" style="display:inline-block;background:#25D366;color:white;padding:10px 24px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:600;margin-right:8px">WhatsApp</a>
           <a href="mailto:pixel@shivaami.com" style="display:inline-block;background:#4285F4;color:white;padding:10px 24px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:600">Email us</a>
         </div>
-        <p style="font-size:12px;color:#5F6368;margin-top:24px;text-align:center">Shivaami — Authorized Google Partner, Mumbai<br/>pixel@shivaami.com · +91 90 2222 3600</p>
+        <p style="font-size:12px;color:#5F6368;margin-top:24px;text-align:center"><span style="color:#1ca0dc;font-family:'Vilane',sans-serif;font-weight:200">shivaami</span> — Authorized Google Partner, Mumbai<br/>pixel@shivaami.com · +91 90 2222 3600</p>
       </div>
     </div>`;
 

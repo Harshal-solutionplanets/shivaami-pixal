@@ -9,6 +9,7 @@ import {
   SAVINGS_VALUES,
 } from "@/lib/marketplace";
 import { useInView } from "@/hooks/useInView";
+import { formatBrandText } from "@/components/ui/BrandText";
 
 const MODELS = [
   { slug: "pixel-10a", label: "Pixel 10a" },
@@ -266,7 +267,7 @@ export default function SavingsCalculator() {
                           {savingsBadge}
                         </p>
                         <p className="text-xs text-muted-foreground leading-relaxed">
-                          {benefit.description}
+                          {formatBrandText(benefit.description)}
                         </p>
                       </div>
                     </div>

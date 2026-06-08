@@ -5,7 +5,7 @@ import MarketplaceClient from "./MarketplaceClient";
 import { products } from "@/lib/products";
 
 export const metadata: Metadata = {
-  title: "B2B Marketplace | TaxPrint & Shivaami — Google Pixel for Business",
+  title: "B2B Marketplace | tax print & shivaami — Google Pixel for Business",
   description:
     "Order Google Pixel 10 series in bulk with exclusive B2B pricing. Volume discounts up to 18%, 2-year protection plan, zero-touch deployment. Mumbai's authorized Google Partner.",
   keywords: [

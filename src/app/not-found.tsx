@@ -155,7 +155,7 @@ export default function NotFound() {
               Back to Home
             </Link>
             <a
-              href="https://wa.me/919022223600?text=Hi%20TaxPrint & Shivaami%2C%20I%27d%20like%20to%20order%20a%20Pixel%20for%20Business"
+              href="https://wa.me/919022223600?text=Hi%20tax%20print%20%26%20shivaami%2C%20I%27d%20like%20to%20order%20a%20Pixel%20for%20Business"
               target="_blank"
               rel="noopener noreferrer"
               className={cn(

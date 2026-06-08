@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown, HelpCircle, MessageCircle, Sparkles, Star, Shield } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { formatBrandText } from "@/components/ui/BrandText";
 
 const faqs = [
   {
@@ -122,7 +123,7 @@ function FAQItem({
       </button>
       {isOpen && (
         <div className="px-6 pb-5 border-t border-border/30">
-          <p className="text-muted-foreground leading-relaxed pt-4">{faq.a}</p>
+          <p className="text-muted-foreground leading-relaxed pt-4">{formatBrandText(faq.a)}</p>
         </div>
       )}
     </div>

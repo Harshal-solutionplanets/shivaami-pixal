@@ -182,7 +182,7 @@ export default function OrderFormModal({
           key,
           amount: summary.effectivePrice * 100,
           currency: "INR",
-          name: "TaxPrint & Shivaami",
+          name: "tax print & shivaami",
           description: `B2B Pixel Order — ${summary.totalQty} device(s)`,
           order_id: razorpayOrderId,
           prefill: {

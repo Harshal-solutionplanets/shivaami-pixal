@@ -56,7 +56,7 @@ export default function ContactCTA() {
             {/* Contact Methods */}
             <div className="space-y-4">
               <a
-                href="https://wa.me/919022223600?text=Hi%20TaxPrint & Shivaami%2C%20I%27m%20interested%20in%20Google%20Pixel%20for%20Business"
+                href="https://wa.me/919022223600?text=Hi%20tax%20print%20%26%20shivaami%2C%20I%27m%20interested%20in%20Google%20Pixel%20for%20Business"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 bg-white rounded-2xl border border-border/60 hover:border-[#25D366]/40 hover:shadow-sm transition-all group"

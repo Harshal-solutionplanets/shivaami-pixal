@@ -4,9 +4,10 @@ import StatsCards from "@/components/admin/StatsCards";
 import OrdersTable, { type OrderRow } from "@/components/admin/OrdersTable";
 import CustomersTable, { type CustomerRow } from "@/components/admin/CustomersTable";
 import PhonesSoldChart from "@/components/admin/PhonesSoldChart";
+import BrandText from "@/components/ui/BrandText";
 
 export const metadata: Metadata = {
-  title: "Admin Dashboard | TaxPrint & Shivaami",
+  title: "Admin Dashboard | tax print & shivaami",
 };
 
 export const dynamic = "force-dynamic";
@@ -108,7 +109,7 @@ export default async function AdminPage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-2xl font-bold text-foreground">Overview</h1>
-        <p className="text-muted-foreground text-sm mt-1">TaxPrint & Shivaami Pixel B2B — real-time sales data</p>
+        <p className="text-muted-foreground text-sm mt-1"><BrandText /> Pixel B2B — real-time sales data</p>
       </div>
 
       <StatsCards stats={{ totalOrders, totalRevenuePaise, unitsSold, pendingOrders }} />

@@ -5,6 +5,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { useInView } from "@/hooks/useInView";
 import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
+import BrandText, { formatBrandText } from "@/components/ui/BrandText";
 import {
   Shield,
   Rocket,
@@ -23,7 +24,7 @@ const benefits = [
     icon: Shield,
     title: "2-Year Protection Plan",
     description:
-      "Complete peace of mind — water damage and theft insurance, plus one full year of extended warranty beyond standard coverage.",
+      "Complete peace of mind — liquid and accidental damage, plus one full year of extended warranty beyond standard coverage.",
     color: "#D2E3FC",
     iconColor: "#4285F4",
   },
@@ -110,7 +111,7 @@ export default function BenefitsGrid() {
           className={`text-center mb-16 reveal ${isVisible ? "visible" : ""}`}
         >
           <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">
-            TaxPrint & Shivaami Exclusive
+            <BrandText /> Exclusive
           </p>
           <h2 className="text-3xl sm:text-5xl font-bold text-foreground mb-4">
             Everything your business needs,{" "}
@@ -118,7 +119,7 @@ export default function BenefitsGrid() {
           </h2>
           <p className="max-w-2xl mx-auto text-muted-foreground text-lg">
             The Pixel for Business plan goes far beyond just a phone. Get a
-            complete productivity ecosystem backed by Google and TaxPrint & Shivaami.
+            complete productivity ecosystem backed by Google and <BrandText />.
           </p>
         </div>
 
@@ -166,7 +167,7 @@ function HeroBanner() {
             <span className="text-primary">with Gemini</span>
           </h3>
           <p className="text-[#3d3d5c]/70 mb-6 max-w-xs leading-relaxed">
-            The smartest, most protected business phone in India — available exclusively through TaxPrint & Shivaami.
+            The smartest, most protected business phone in India — available exclusively through <BrandText />.
           </p>
           <Link
             href="/products"
@@ -228,7 +229,7 @@ function BenefitCard({
           {benefit.title}
         </h3>
         <p className="text-sm text-muted-foreground leading-relaxed relative z-10">
-          {benefit.description}
+          {formatBrandText(benefit.description)}
         </p>
       </CardContent>
     </Card>

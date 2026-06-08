@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = getProductBySlug(slug);
   if (!product) return {};
   return {
-    title: `${product.name} for Business | TaxPrint & Shivaami`,
-    description: `${product.businessValue} Order the ${product.name} through TaxPrint & Shivaami with exclusive B2B benefits: 2-year protection, zero-touch deployment, and corporate pricing.`,
+    title: `${product.name} for Business | tax print & shivaami`,
+    description: `${product.businessValue} Order the ${product.name} through tax print & shivaami with exclusive B2B benefits: 2-year protection, zero-touch deployment, and corporate pricing.`,
   };
 }
 

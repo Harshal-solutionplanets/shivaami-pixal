@@ -6,11 +6,12 @@ import ProductCard from "@/components/products/ProductCard";
 import WhyPixelBusiness from "@/components/products/WhyPixelBusiness";
 import PlanComparison from "@/components/landing/PlanComparison";
 import { products } from "@/lib/products";
+import BrandText from "@/components/ui/BrandText";
 
 export const metadata: Metadata = {
-  title: "Pixel 10 Series for Business | TaxPrint & Shivaami",
+  title: "Pixel 10 Series for Business | tax print & shivaami",
   description:
-    "Browse the full Google Pixel 10 lineup — Pixel 10a, Pixel 10, Pixel 10 Pro, and Pixel 10 Pro XL — with TaxPrint & Shivaami's exclusive business plan: 2-year protection, zero-touch deployment, and corporate pricing.",
+    "Browse the full Google Pixel 10 lineup — Pixel 10a, Pixel 10, Pixel 10 Pro, and Pixel 10 Pro XL — with tax print & shivaami's exclusive business plan: 2-year protection, zero-touch deployment, and corporate pricing.",
 };
 
 export default function ProductsPage() {
@@ -32,7 +33,7 @@ export default function ProductsPage() {
                 <span className="text-primary">One business plan.</span>
               </h2>
               <p className="max-w-2xl mx-auto text-muted-foreground text-lg">
-                Every Pixel in the lineup comes with the full TaxPrint & Shivaami business package — pick the right model for each role in your team.
+                Every Pixel in the lineup comes with the full <BrandText /> business package — pick the right model for each role in your team.
               </p>
             </div>
 

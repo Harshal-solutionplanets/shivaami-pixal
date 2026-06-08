@@ -106,7 +106,7 @@ export default function Logo({ className, light = false }: LogoProps) {
         <div className="flex items-center gap-1.5">
           <img
             src="/assets/shivaami.png"
-            alt="Shivaami"
+            alt="shivaami"
             className={cn("h-6 w-auto object-contain", light && "bg-white px-2 py-0.5 rounded")}
           />
         </div>

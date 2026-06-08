@@ -195,3 +195,18 @@ html {
 .delay-300 { transition-delay: 0.3s; }
 .delay-400 { transition-delay: 0.4s; }
 .delay-500 { transition-delay: 0.5s; }
+
+/* Custom font configurations for branding */
+.font-tax-print {
+  color: #f06522 !important;
+  font-family: "Naked Power", sans-serif !important;
+  font-weight: 900 !important;
+  font-style: italic !important;
+  text-transform: lowercase !important;
+}
+
+.font-shivaami {
+  color: #1ca0dc !important;
+  font-family: "Vilane", sans-serif !important;
+  font-weight: 200 !important;
+}

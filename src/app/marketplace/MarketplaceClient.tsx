@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Product } from "@/lib/products";
 import { CartProvider } from "@/context/CartContext";
+import BrandText from "@/components/ui/BrandText";
 import SavingsCalculator from "@/components/marketplace/SavingsCalculator";
 import ProductOrderCard from "@/components/marketplace/ProductOrderCard";
 import OrderSummary, { MobileCartBar } from "@/components/marketplace/OrderSummary";
@@ -31,7 +32,7 @@ export default function MarketplaceClient({ products }: MarketplaceClientProps) 
           </h1>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
             Exclusive corporate pricing with 18% GST input credit, 2-year
-            protection, and AI support — only through TaxPrint & Shivaami, Mumbai&apos;s
+            protection, and AI support — only through <BrandText />, Mumbai&apos;s
             authorized Google Partner.
           </p>
         </div>

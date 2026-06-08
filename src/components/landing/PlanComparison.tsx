@@ -2,6 +2,7 @@
 
 import { useInView } from "@/hooks/useInView";
 import { Check, X, BadgePercent, Shield, Rocket, Star, Sparkles } from "lucide-react";
+import BrandText, { formatBrandText } from "@/components/ui/BrandText";
 
 const rows = [
   {
@@ -110,13 +111,13 @@ export default function PlanComparison() {
         {/* Header */}
         <div ref={ref as React.RefObject<HTMLDivElement>} className={`text-center mb-16 reveal ${isVisible ? "visible" : ""}`}>
           <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">
-            Why Choose TaxPrint & Shivaami
+            Why Choose <BrandText />
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Pixel for Business vs. Regular Retail
           </h2>
           <p className="max-w-xl mx-auto text-muted-foreground text-lg">
-            The TaxPrint & Shivaami business plan gives your team far more than just a
+            The <BrandText /> business plan gives your team far more than just a
             phone — at pricing retail can&apos;t match.
           </p>
         </div>
@@ -134,7 +135,7 @@ export default function PlanComparison() {
                   <span className="w-1.5 h-1.5 rounded-full bg-[#FBBC05]" />
                   <span className="w-1.5 h-1.5 rounded-full bg-[#34A853]" />
                 </div>
-                <span className="font-bold text-sm text-foreground">TaxPrint & Shivaami Business</span>
+                <span className="font-bold text-sm text-foreground"><BrandText /> Business</span>
               </div>
               <p className="text-xs text-primary font-medium">via Pixel for Business</p>
             </div>
@@ -153,7 +154,7 @@ export default function PlanComparison() {
               }`}
             >
               <div className="p-4 pl-5 flex items-center">
-                <span className="text-sm text-foreground/80">{row.feature}</span>
+                <span className="text-sm text-foreground/80">{formatBrandText(row.feature)}</span>
               </div>
               <div className="p-4 flex items-center justify-center border-l border-border/50">
                 {row.business ? (
@@ -182,7 +183,7 @@ export default function PlanComparison() {
         </div>
 
         <p className="text-center text-xs text-muted-foreground mt-4">
-          * Benefits subject to TaxPrint & Shivaami business plan terms and conditions.
+          * Benefits subject to <BrandText /> business plan terms and conditions.
         </p>
 
         {/* Corporate Benefits Callout Box */}
@@ -194,7 +195,7 @@ export default function PlanComparison() {
             <span className="bg-[#FFE2D1] text-[#A73B00] px-2 py-0.5 rounded-lg text-xs font-black tracking-wider uppercase">
               Exclusive
             </span>
-            <span>Corporate Benefits with TaxPrint & Shivaami:</span>
+            <span>Corporate Benefits with <BrandText />:</span>
           </h3>
           
           <ul className="space-y-3 mb-5 text-sm text-foreground/80 font-medium">
@@ -214,7 +215,7 @@ export default function PlanComparison() {
           
           <div className="border-t border-border/40 pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-xl">
-              These benefits that typically cost an additional <strong className="text-foreground font-semibold">15%–20%</strong>, now available absolutely <strong className="text-[#A73B00] font-black uppercase bg-[#FFE2D1] px-1.5 py-0.5 rounded">FREE</strong> with TaxPrint & Shivaami.
+              These benefits that typically cost an additional <strong className="text-foreground font-semibold">15%–20%</strong>, now available absolutely <strong className="text-[#A73B00] font-black uppercase bg-[#FFE2D1] px-1.5 py-0.5 rounded">FREE</strong> with <BrandText />.
             </p>
           </div>
         </div>

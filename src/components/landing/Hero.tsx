@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import BrandText from "@/components/ui/BrandText";
 import {
   ArrowRight,
   MessageCircle,
@@ -86,7 +87,7 @@ export default function Hero() {
               Google Pixel 10 series with{" "}
               <strong className="text-foreground">2-year protection</strong>,
               zero-touch deployment, AI workshops, and exclusive SMB pricing —
-              only from TaxPrint & Shivaami.
+              only from <BrandText />.
             </p>
 
             {/* CTAs */}
@@ -115,7 +116,7 @@ export default function Hero() {
                 Check Your Savings
               </Link>
               <a
-                href="https://wa.me/919022223600?text=Hi%20TaxPrint & Shivaami%2C%20I%27m%20interested%20in%20Google%20Pixel%20for%20Business"
+                href="https://wa.me/919022223600?text=Hi%20tax%20print%20%26%20shivaami%2C%20I%27m%20interested%20in%20Google%20Pixel%20for%20Business"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
@@ -243,7 +244,7 @@ export default function Hero() {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-foreground leading-none">2-Year Protection</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">Water · Theft · Warranty</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Water · Warranty</p>
                 </div>
               </div>
 

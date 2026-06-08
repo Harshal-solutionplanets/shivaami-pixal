@@ -5,6 +5,7 @@ import { useInView } from "@/hooks/useInView";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Shield, Rocket, BadgePercent, MessageCircle } from "lucide-react";
+import BrandText from "@/components/ui/BrandText";
 
 const shivaamiBenefits = [
   {
@@ -53,11 +54,11 @@ export default function ProductOrderCTA({ productName, ecosystemBenefits }: Prod
               <span className="text-primary">with {productName}?</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              Order through TaxPrint & Shivaami and get exclusive business benefits not available anywhere else.
+              Order through <BrandText /> and get exclusive business benefits not available anywhere else.
             </p>
           </div>
 
-          {/* TaxPrint & Shivaami Benefits */}
+          {/* Brand Benefits */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
             {shivaamiBenefits.map((benefit) => {
               const Icon = benefit.icon;
