@@ -50,7 +50,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-4rem)] py-16">
 
           {/* ── LEFT — Copy ── */}
-          <div className="relative z-10">
+          <div className="relative z-10 lg:-mt-10">
 
             {/* Google Partner badge */}
             <div className="mb-6" style={{ animation: "slide-up 0.6s ease both" }}>
@@ -67,7 +67,7 @@ export default function Hero() {
 
             {/* Headline */}
             <h1
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#1a1a2e] leading-[1.05] mb-6"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1a1a2e] leading-[1.05] mb-6"
               style={{ animation: "slide-up 0.7s 0.1s ease both" }}
             >
               Empower
@@ -81,7 +81,7 @@ export default function Hero() {
 
             {/* Subheadline */}
             <p
-              className="text-lg text-[#3d3d5c]/80 leading-relaxed mb-10 max-w-lg"
+              className="text-lg text-[#3d3d5c]/80 leading-relaxed mb-6 max-w-lg"
               style={{ animation: "slide-up 0.7s 0.2s ease both" }}
             >
               Google Pixel 10 series with{" "}
@@ -90,43 +90,32 @@ export default function Hero() {
               only from <BrandText />.
             </p>
 
-            {/* CTAs */}
-            <div
-              className="flex flex-col sm:flex-row flex-wrap gap-3 mb-12"
-              style={{ animation: "slide-up 0.7s 0.3s ease both" }}
+            {/* SMB Feature list */}
+            <div 
+              className="mb-8 text-sm sm:text-base text-[#3d3d5c]/90 space-y-3"
+              style={{ animation: "slide-up 0.7s 0.25s ease both" }}
             >
-              <Link
-                href="/marketplace"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "rounded-full px-8 h-13 text-base font-semibold bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/30 gap-2 inline-flex items-center"
-                )}
-              >
-                Shop Pixel 10 Series
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/marketplace#savings-calculator"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "rounded-full px-8 h-13 text-base font-semibold gap-2 bg-emerald-600 hover:bg-emerald-700 text-white shadow-xl shadow-emerald-600/25 inline-flex items-center transition-all duration-200 hover:-translate-y-0.5"
-                )}
-              >
-                <Calculator className="w-4 h-4" />
-                Check Your Savings
-              </Link>
-              <a
-                href="https://wa.me/919022223600?text=Hi%20tax%20print%20%26%20shivaami%2C%20I%27m%20interested%20in%20Google%20Pixel%20for%20Business"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" }),
-                  "rounded-full px-8 h-13 text-base font-semibold gap-2 bg-white/70 backdrop-blur border-white/60 inline-flex items-center hover:bg-white"
-                )}
-              >
-                <MessageCircle className="w-4 h-4 text-[#25D366]" />
-                WhatsApp Us
-              </a>
+              <p className="font-semibold text-[#1a1a2e] text-base">
+                Built for SMBs. Powered for Productivity.
+              </p>
+              <ul className="space-y-2 text-[#3d3d5c]/80">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold shrink-0">•</span>
+                  <span>Corporate pricing + 18% GST input credit.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold shrink-0">•</span>
+                  <span>Free 2 years accidental & liquid damage protection.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold shrink-0">•</span>
+                  <span>Free pan-India doorstep pickup & drop for repairs - 2 Years.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold shrink-0">•</span>
+                  <span>1-year extended warranty (Total 2 years).</span>
+                </li>
+              </ul>
             </div>
 
             {/* Trust row */}
@@ -149,7 +138,7 @@ export default function Hero() {
 
           {/* ── RIGHT — Big Phone Image + floating chips ── */}
           <div
-            className="relative flex justify-center lg:justify-end"
+            className="relative flex flex-col items-center lg:items-end lg:-mt-10"
             style={{ animation: "scale-in 0.9s 0.15s ease both" }}
           >
             {/*
@@ -176,17 +165,17 @@ export default function Hero() {
 
               {/* ── TOP ZONE chips (above the image frame) ── */}
 
-              {/* Gemini AI — top-left */}
+              {/* 1 Year Extended warranty — top-left (Swapped) */}
               <div
                 className="absolute top-2 left-0 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-float"
                 style={{ animationDelay: "0s" }}
               >
-                <div className="w-9 h-9 rounded-xl bg-[#E8D5FF] flex items-center justify-center shrink-0">
-                  <Sparkles className="w-4 h-4 text-[#7C3AED]" />
+                <div className="w-9 h-9 rounded-xl bg-[#E0F7FA] flex items-center justify-center shrink-0">
+                  <ShieldCheck className="w-4 h-4 text-[#00838F]" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-foreground leading-none">Gemini AI</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">Built right in</p>
+                  <p className="text-xs font-bold text-foreground leading-none">1 Year Extended warranty</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Total 2 years of manufacturer warranty coverage</p>
                 </div>
               </div>
 
@@ -204,17 +193,17 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* 1 Year Extended warranty — lower-left */}
+              {/* Gemini AI — lower-left (Swapped) */}
               <div
                 className="absolute top-[62%] -left-8 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-float"
                 style={{ animationDelay: "0.4s" }}
               >
-                <div className="w-9 h-9 rounded-xl bg-[#E0F7FA] flex items-center justify-center shrink-0">
-                  <ShieldCheck className="w-4 h-4 text-[#00838F]" />
+                <div className="w-9 h-9 rounded-xl bg-[#E8D5FF] flex items-center justify-center shrink-0">
+                  <Sparkles className="w-4 h-4 text-[#7C3AED]" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-foreground leading-none">1 Year Extended warranty</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">Total 2 years of manufacturer warranty coverage</p>
+                  <p className="text-xs font-bold text-foreground leading-none">Gemini AI</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Built right in</p>
                 </div>
               </div>
 
@@ -243,7 +232,7 @@ export default function Hero() {
                   <Shield className="w-4 h-4 text-[#1A73E8]" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-foreground leading-none">2-Year Protection</p>
+                  <p className="text-xs font-bold text-foreground leading-none">2-Year Comprehensive Device Protection</p>
                   <p className="text-xs text-muted-foreground mt-0.5">Water · Warranty</p>
                 </div>
               </div>
@@ -277,6 +266,33 @@ export default function Hero() {
                 </div>
               </div>
 
+            </div>
+
+            {/* Shop and Calculator buttons exactly below the image wrapper */}
+            <div
+              className="w-full max-w-lg lg:max-w-none flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-3 mt-4 relative z-20 px-2"
+              style={{ animation: "slide-up 0.7s 0.35s ease both" }}
+            >
+              <Link
+                href="/marketplace"
+                className={cn(
+                  buttonVariants({ size: "lg" }),
+                  "rounded-full px-8 h-13 text-base font-semibold bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/30 gap-2 inline-flex items-center justify-center"
+                )}
+              >
+                Shop Pixel 10 Series
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/marketplace#savings-calculator"
+                className={cn(
+                  buttonVariants({ size: "lg" }),
+                  "rounded-full px-8 h-13 text-base font-semibold gap-2 bg-emerald-600 hover:bg-emerald-700 text-white shadow-xl shadow-emerald-600/25 inline-flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5"
+                )}
+              >
+                <Calculator className="w-4 h-4" />
+                Check Your Savings
+              </Link>
             </div>
           </div>
 

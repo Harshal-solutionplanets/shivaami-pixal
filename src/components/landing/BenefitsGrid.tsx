@@ -22,7 +22,7 @@ import {
 const benefits = [
   {
     icon: Shield,
-    title: "2-Year Protection Plan",
+    title: "2-Year Comprehensive Device Protection",
     description:
       "Complete peace of mind — liquid and accidental damage, plus one full year of extended warranty beyond standard coverage.",
     color: "#D2E3FC",
