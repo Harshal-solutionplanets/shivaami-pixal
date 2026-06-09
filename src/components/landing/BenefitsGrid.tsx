@@ -17,6 +17,8 @@ import {
   Sparkles,
   Star,
   Zap,
+  Truck,
+  Bot,
 } from "lucide-react";
 
 const benefits = [
@@ -67,6 +69,30 @@ const benefits = [
       "A dedicated TaxPrint & Shivaami account manager for your business. Priority response, same-day troubleshooting, and proactive care.",
     color: "#EDE7F6",
     iconColor: "#7C3AED",
+  },
+  {
+    icon: Truck,
+    title: "FREE Doorstep Pan India Pickup & Drop for Repairs (For 2 Years)",
+    description:
+      "We handle the full pickup and drop across all pincodes. Your team doesn't lift a finger.",
+    color: "#E6F4EA",
+    iconColor: "#1E8E3E",
+  },
+  {
+    icon: Shield,
+    title: "FREE 1-Year Extended Warranty (Total 2 Years)",
+    description:
+      "Get 1 Year Standard Warranty + FREE 1 Year Extended Warranty. Total 2 years of protection on every Pixel. More coverage. More confidence. More value.",
+    color: "#FEF0CD",
+    iconColor: "#F9AB00",
+  },
+  {
+    icon: Bot,
+    title: "Google Gemini AI - Free with Every Device",
+    description:
+      "Get 6 to 12 months of Google Gemini AI included, depending on your Pixel model. Your team starts working smarter from day one, and no extra purchase is needed.",
+    color: "#FCE8E6",
+    iconColor: "#EA4335",
   },
 ];
 

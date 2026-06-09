@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { Mic2, Phone, Wand2, Camera, Sparkles, Star, BrainCircuit, Zap } from "lucide-react";
+import { Mic2, Phone, Wand2, Camera, Sparkles, Star, BrainCircuit, Zap, Battery, Cpu, Shield } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const features = [
@@ -48,6 +48,37 @@ const features = [
   },
 ];
 
+const hardwareFeatures = [
+  {
+    icon: Camera,
+    name: "AI Camera",
+    description: "Camera Coach, Add Me, Magic Eraser - every photo is stunning",
+    color: "#E8F0FE",
+    iconColor: "#1A73E8",
+  },
+  {
+    icon: Battery,
+    name: "30+ Hours Battery",
+    description: "All-day power with fast charging and wireless charging",
+    color: "#E6F4EA",
+    iconColor: "#1E8E3E",
+  },
+  {
+    icon: Cpu,
+    name: "Tensor G5 Chip",
+    description: "Next-gen chip built by Google for peak AI performance",
+    color: "#FCE8E6",
+    iconColor: "#D93025",
+  },
+  {
+    icon: Shield,
+    name: "Titan M2 Security",
+    description: "7 years of updates, IP68 water resistance, built to last",
+    color: "#FEF0CD",
+    iconColor: "#F9AB00",
+  },
+];
+
 export default function FeaturesSection() {
   const { ref: headerRef, isVisible: headerVisible } = useInView(0.1);
 
@@ -89,6 +120,13 @@ export default function FeaturesSection() {
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-6">
           {features.map((feature, i) => (
             <FeatureCard key={feature.name} feature={feature} index={i} />
+          ))}
+        </div>
+
+        {/* Hardware Specs Row */}
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {hardwareFeatures.map((hw, i) => (
+            <HardwareCard key={hw.name} hw={hw} index={i} />
           ))}
         </div>
       </div>
@@ -179,6 +217,33 @@ function FeatureCard({
         <p className="font-medium text-primary text-sm mb-2">{feature.tagline}</p>
         <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
       </div>
+    </div>
+  );
+}
+
+function HardwareCard({
+  hw,
+  index,
+}: {
+  hw: (typeof hardwareFeatures)[0];
+  index: number;
+}) {
+  const { ref, isVisible } = useInView(0.1);
+  const Icon = hw.icon;
+
+  return (
+    <div
+      ref={ref as React.RefObject<HTMLDivElement>}
+      className={`reveal delay-${[0, 100, 200, 300][index] ?? 0} ${isVisible ? "visible" : ""} group bg-white rounded-3xl p-6 border border-border/60 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1 hover:border-primary/20 transition-all duration-300 flex flex-col items-center text-center`}
+    >
+      <div
+        className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 mb-4 group-hover:scale-110 transition-transform duration-300"
+        style={{ background: hw.color }}
+      >
+        <Icon className="w-7 h-7" style={{ color: hw.iconColor }} />
+      </div>
+      <h4 className="font-bold text-base text-foreground mb-2">{hw.name}</h4>
+      <p className="text-sm text-muted-foreground leading-relaxed">{hw.description}</p>
     </div>
   );
 }
