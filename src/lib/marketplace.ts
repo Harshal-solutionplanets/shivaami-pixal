@@ -1,8 +1,8 @@
 export const RETAIL_PRICES: Record<string, number> = {
-  "pixel-10a": 47_940,
-  "pixel-10": 69_359,
-  "pixel-10-pro-xl": 1_17_299,
-  "pixel-10-pro-fold": 1_66_260,
+  "pixel-10a": 46_999,
+  "pixel-10": 67_999,
+  "pixel-10-pro-xl": 1_14_999,
+  "pixel-10-pro-fold": 1_62_999,
 };
 
 // No bulk discount — these are fixed corporate prices (incl. 18% GST)

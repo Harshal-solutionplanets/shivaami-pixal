@@ -40,7 +40,7 @@ export const products: Product[] = [
     badge: "Affordable",
     badgeColor: "bg-[#CEEAD6] text-[#1E8E3E]",
     accentBg: "#CEEAD6",
-    priceFrom: "\u20B9 47,940",
+    priceFrom: "\u20B9 46,999",
     colors: [
       { name: "Obsidian", hex: "#1F1F1F" },
       { name: "Aloe", hex: "#8FB8A8" },
@@ -118,7 +118,7 @@ export const products: Product[] = [
     badge: "Best Seller",
     badgeColor: "bg-[#D2E3FC] text-[#1A73E8]",
     accentBg: "#D2E3FC",
-    priceFrom: "\u20B9 69,359",
+    priceFrom: "\u20B9 67,999",
     colors: [
       { name: "Obsidian", hex: "#1F1F1F" },
       { name: "Viridian Blue", hex: "#1A6FE3" },
@@ -199,7 +199,7 @@ export const products: Product[] = [
     badge: "Popular",
     badgeColor: "bg-[#E8D5FF] text-[#7C3AED]",
     accentBg: "#E8D5FF",
-    priceFrom: "\u20B9 1,17,299",
+    priceFrom: "\u20B9 1,14,999",
     colors: [
       { name: "Obsidian", hex: "#1F1F1F" },
       { name: "Misty", hex: "#8E9BAE" },
@@ -278,7 +278,7 @@ export const products: Product[] = [
     badge: "Flagship",
     badgeColor: "bg-[#FCE8E6] text-[#D93025]",
     accentBg: "#FEF0CD",
-    priceFrom: "\u20B9 1,66,260",
+    priceFrom: "\u20B9 1,62,999",
     colors: [
       { name: "Obsidian", hex: "#1F1F1F" },
       { name: "Porcelain", hex: "#F0EDE8" },
