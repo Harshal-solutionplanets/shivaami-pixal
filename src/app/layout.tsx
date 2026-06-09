@@ -99,6 +99,11 @@ fbq('track', 'PageView');
         {/* End Google Tag Manager (noscript) */}
         {children}
         <FloatingWhatsApp />
+        <Script
+          id="hs-script-loader"
+          strategy="afterInteractive"
+          src="https://js-na2.hs-scripts.com/246441264.js"
+        />
       </body>
     </html>
   );
