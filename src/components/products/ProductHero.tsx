@@ -32,7 +32,7 @@ export default function ProductHero({ product }: ProductHeroProps) {
       <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-[#E8D5FF]/40 blur-3xl pointer-events-none" />
 
       {/* Sticky mini-header bar */}
-      <div className="sticky top-16 z-20 bg-white/80 backdrop-blur-md border-b border-border/40 py-3 px-4">
+      <div className="sticky top-24 z-20 bg-white/80 backdrop-blur-md border-b border-border/40 py-3 px-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Link href="/products" className="hover:text-primary transition-colors">Products</Link>
