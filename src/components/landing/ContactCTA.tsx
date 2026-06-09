@@ -1,31 +1,39 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { MessageCircle, Mail, Phone, ArrowRight, Send, Sparkles, Star, Headphones } from "lucide-react";
+import { useEffect } from "react";
+import Script from "next/script";
+import { MessageCircle, Mail, Phone, ArrowRight, Sparkles, Star, Headphones } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
-export default function ContactCTA() {
-  const [form, setForm] = useState({
-    name: "",
-    company: "",
-    email: "",
-    message: "",
-  });
-  const [sent, setSent] = useState(false);
+declare global {
+  interface Window {
+    hbspt?: any;
+  }
+}
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // mailto fallback — replace with Supabase/Resend in Step 4
-    const subject = encodeURIComponent(`Pixel for Business Enquiry — ${form.company}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
-    );
-    window.open(`mailto:pixel@shivaami.com?subject=${subject}&body=${body}`);
-    setSent(true);
+export default function ContactCTA() {
+  const { ref, isVisible } = useInView(0.1);
+
+  const loadHubSpotForm = () => {
+    if (window.hbspt) {
+      const target = document.querySelector(".hs-form-frame");
+      if (target) {
+        target.innerHTML = "";
+        window.hbspt.forms.create({
+          region: "na2",
+          portalId: "246441264",
+          formId: "db585cdf-e7b5-4857-93d9-a08421125f37",
+          target: ".hs-form-frame"
+        });
+      }
+    }
   };
 
-  const { ref, isVisible } = useInView(0.1);
+  useEffect(() => {
+    if (window.hbspt) {
+      loadHubSpotForm();
+    }
+  }, []);
 
   return (
     <section id="contact" className="relative py-28 bg-[#EEF2FF] overflow-hidden">
@@ -101,88 +109,28 @@ export default function ContactCTA() {
             </div>
           </div>
 
-          {/* Right — Enquiry Form */}
-          <div className="bg-white rounded-3xl border border-border/60 p-8 shadow-sm">
-            {sent ? (
-              <div className="text-center py-12">
-                <div className="w-16 h-16 rounded-full bg-[#E6F4EA] flex items-center justify-center mx-auto mb-4">
-                  <Send className="w-8 h-8 text-[#1E8E3E]" />
-                </div>
-                <h3 className="font-bold text-xl text-foreground mb-2">Message sent!</h3>
-                <p className="text-muted-foreground">
-                  We&apos;ll get back to you within 24 hours at {form.email}.
-                </p>
+          {/* Right — Enquiry Form (HubSpot Embed) */}
+          <div className="bg-white rounded-3xl border border-border/60 p-8 shadow-sm min-h-[480px]">
+            <Script
+              src="https://js-na2.hsforms.net/forms/embed/246441264.js"
+              strategy="afterInteractive"
+              onReady={loadHubSpotForm}
+            />
+            <div
+              className="hs-form-frame"
+              data-region="na2"
+              data-form-id="db585cdf-e7b5-4857-93d9-a08421125f37"
+              data-portal-id="246441264"
+            >
+              {/* Fallback loader before HubSpot initializes */}
+              <div className="flex flex-col items-center justify-center py-20 text-sm text-muted-foreground gap-2">
+                <span className="w-6 h-6 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
+                <span>Loading secure form...</span>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    placeholder="Rahul Sharma"
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">
-                    Company Name
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.company}
-                    onChange={(e) => setForm({ ...form, company: e.target.value })}
-                    placeholder="Acme Pvt. Ltd."
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">
-                    Work Email
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    placeholder="rahul@acme.com"
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">
-                    Message
-                  </label>
-                  <textarea
-                    rows={4}
-                    required
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="I'm interested in getting Pixel 10 Pro for a team of 20 people..."
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition resize-none"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  className="w-full h-12 rounded-xl bg-primary hover:bg-primary/90 font-semibold text-base gap-2"
-                >
-                  Send Enquiry
-                  <Send className="w-4 h-4" />
-                </Button>
-                <p className="text-xs text-center text-muted-foreground">
-                  We&apos;ll respond within 24 hours. No spam, ever.
-                </p>
-              </form>
-            )}
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
-
 }

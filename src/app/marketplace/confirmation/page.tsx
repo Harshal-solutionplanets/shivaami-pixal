@@ -49,7 +49,7 @@ function ConfirmationContent() {
             Order Received!
           </h1>
           <p className="text-muted-foreground mb-3">
-            Thank you for choosing <BrandText /> for your team&apos;s Pixel upgrade.
+            Thank you for choosing <BrandText />  for your team&apos;s Pixel upgrade.
           </p>
           {orderId && (
             <div className="inline-flex items-center gap-2 bg-muted/50 rounded-full px-4 py-2">
