@@ -42,9 +42,9 @@ export default function OrdersTable({ orders }: { orders: OrderRow[] }) {
       <div className="px-6 py-4 border-b border-border/60">
         <h2 className="text-base font-semibold text-foreground">Recent Orders</h2>
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto max-h-[380px] overflow-y-auto">
         <table className="w-full text-sm whitespace-nowrap">
-          <thead>
+          <thead className="sticky top-0 z-10 bg-[#FAFAFA]">
             <tr className="border-b border-border/40 bg-[#FAFAFA]">
               {[
                 "Order ID",

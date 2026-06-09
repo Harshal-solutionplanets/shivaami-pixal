@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import SignOutButton from "@/components/admin/SignOutButton";
 import Link from "next/link";
 import BrandText from "@/components/ui/BrandText";
+import AdminNav from "@/components/admin/AdminNav";
 
 const ADMIN_EMAILS = (process.env.ADMIN_EMAILS ?? "").split(",").map((e) => e.trim().toLowerCase());
 
@@ -25,7 +26,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
               <BrandText />
             </Link>
             <span className="text-border/80">|</span>
-            <span className="text-sm font-semibold text-muted-foreground">Admin Dashboard</span>
+            <AdminNav />
           </div>
           <div className="flex items-center gap-3">
             <span className="text-xs text-muted-foreground hidden sm:block">{user.email}</span>

@@ -11,18 +11,47 @@ export default function ContactCTA() {
     name: "",
     company: "",
     email: "",
+    phone: "",
     message: "",
   });
+  const [errors, setErrors] = useState<{ phone?: string }>({});
+  const [submitting, setSubmitting] = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Pixel for Business Enquiry — ${form.company}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
-    );
-    window.open(`mailto:pixel@shivaami.com?subject=${subject}&body=${body}`);
-    setSent(true);
+    setApiError(null);
+
+    // Validation
+    const cleanPhone = form.phone.replace(/\s/g, "");
+    if (!form.phone.trim() || !/^\d{10}$/.test(cleanPhone)) {
+      setErrors({ phone: "10-digit phone number required" });
+      return;
+    }
+    setErrors({});
+    setSubmitting(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error ?? "Failed to send enquiry. Please try again.");
+      }
+
+      setSent(true);
+    } catch (err: any) {
+      setApiError(err.message || "Failed to submit enquiry.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const { ref, isVisible } = useInView(0.1);
@@ -129,7 +158,8 @@ export default function ContactCTA() {
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="Rahul Sharma"
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
+                    disabled={submitting}
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition disabled:opacity-60"
                   />
                 </div>
                 <div>
@@ -142,7 +172,8 @@ export default function ContactCTA() {
                     value={form.company}
                     onChange={(e) => setForm({ ...form, company: e.target.value })}
                     placeholder="Acme Pvt. Ltd."
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
+                    disabled={submitting}
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition disabled:opacity-60"
                   />
                 </div>
                 <div>
@@ -155,8 +186,31 @@ export default function ContactCTA() {
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     placeholder="rahul@acme.com"
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
+                    disabled={submitting}
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition disabled:opacity-60"
                   />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">
+                    Mobile Number
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    value={form.phone}
+                    onChange={(e) => {
+                      setForm({ ...form, phone: e.target.value });
+                      setErrors((prev) => ({ ...prev, phone: undefined }));
+                    }}
+                    placeholder="9876543210"
+                    disabled={submitting}
+                    className={`w-full px-4 py-3 rounded-xl border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition disabled:opacity-60 ${
+                      errors.phone ? "border-destructive focus:ring-destructive/40" : "border-border"
+                    }`}
+                  />
+                  {errors.phone && (
+                    <p className="mt-1 text-xs text-destructive">{errors.phone}</p>
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1.5">
@@ -168,14 +222,19 @@ export default function ContactCTA() {
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     placeholder="I'm interested in getting Pixel 10 Pro for a team of 20 people..."
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition resize-none"
+                    disabled={submitting}
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition resize-none disabled:opacity-60"
                   />
                 </div>
+                {apiError && (
+                  <p className="text-xs text-center text-destructive font-medium">{apiError}</p>
+                )}
                 <Button
                   type="submit"
-                  className="w-full h-12 rounded-xl bg-primary hover:bg-primary/90 font-semibold text-base gap-2"
+                  disabled={submitting}
+                  className="w-full h-12 rounded-xl bg-primary hover:bg-primary/90 font-semibold text-base gap-2 disabled:opacity-60"
                 >
-                  Send Enquiry
+                  {submitting ? "Sending..." : "Send Enquiry"}
                   <Send className="w-4 h-4" />
                 </Button>
                 <p className="text-xs text-center text-muted-foreground">

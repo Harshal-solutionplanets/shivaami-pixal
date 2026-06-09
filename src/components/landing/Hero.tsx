@@ -47,7 +47,7 @@ export default function Hero() {
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-6rem)] pt-2 pb-16 lg:-mt-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-4rem)] py-16">
 
           {/* ── LEFT — Copy ── */}
           <div className="relative z-10 lg:-mt-10">
