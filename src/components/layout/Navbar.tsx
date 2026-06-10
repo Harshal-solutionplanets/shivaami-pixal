@@ -46,6 +46,12 @@ export default function Navbar() {
     setOpen(false);
   }, [pathname]);
 
+  // Dispatch custom event when mobile menu state changes
+  useEffect(() => {
+    const event = new CustomEvent("menu-toggle", { detail: { open } });
+    window.dispatchEvent(event);
+  }, [open]);
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${

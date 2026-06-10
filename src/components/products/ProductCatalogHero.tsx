@@ -7,7 +7,7 @@ export default function ProductCatalogHero() {
   const { ref, isVisible } = useInView(0.1);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#e1e6f8] via-[#F5F7FF] to-[#d4f3d7] py-20 sm:py-28">
+    <section className="relative overflow-hidden bg-gradient-to-br from-[#e1e6f8] via-[#F5F7FF] to-[#d4f3d7] pt-32 pb-20 sm:py-28">
   
   {/* Background glow */}
   <div className="absolute top-[-100px] left-[20%] w-[400px] h-[400px] bg-primary/10 rounded-full blur-3xl" />

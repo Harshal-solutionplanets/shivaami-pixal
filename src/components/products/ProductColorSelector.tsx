@@ -1,18 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { ProductColor } from "@/lib/products";
 
 interface ProductColorSelectorProps {
   colors: ProductColor[];
+  selectedColor?: ProductColor;
   onColorChange?: (color: ProductColor, index: number) => void;
 }
 
 export default function ProductColorSelector({
   colors,
+  selectedColor,
   onColorChange,
 }: ProductColorSelectorProps) {
-  const [selected, setSelected] = useState(0);
+  const initialIndex = selectedColor
+    ? colors.findIndex((c) => c.name === selectedColor.name)
+    : 0;
+
+  const [selected, setSelected] = useState(initialIndex !== -1 ? initialIndex : 0);
+
+  useEffect(() => {
+    if (selectedColor) {
+      const idx = colors.findIndex((c) => c.name === selectedColor.name);
+      if (idx !== -1) {
+        setSelected(idx);
+      }
+    }
+  }, [selectedColor, colors]);
 
   function handleSelect(color: ProductColor, index: number) {
     setSelected(index);

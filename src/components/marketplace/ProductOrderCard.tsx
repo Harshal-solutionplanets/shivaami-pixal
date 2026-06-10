@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import type { Product, ProductColor } from "@/lib/products";
 import { RETAIL_PRICES, formatInr } from "@/lib/marketplace";
@@ -20,11 +20,19 @@ export default function ProductOrderCard({ product, index }: ProductOrderCardPro
   const { ref, isVisible } = useInView(0.1);
   const { items, addItem, removeItem, updateQuantity, updateColor } = useCart();
 
+  const cartItem = items.find((i) => i.productSlug === product.slug);
+
   const [selectedColor, setSelectedColor] = useState<ProductColor>(
-    product.colors[0]
+    cartItem?.color ?? product.colors[0]
   );
 
-  const cartItem = items.find((i) => i.productSlug === product.slug);
+  // Sync local selectedColor state with the cart item's color (e.g. from query params on mount)
+  useEffect(() => {
+    if (cartItem?.color) {
+      setSelectedColor(cartItem.color);
+    }
+  }, [cartItem?.color]);
+
   const isInCart = !!cartItem;
   const displayQty = cartItem?.quantity ?? 0;
   const unitPrice = RETAIL_PRICES[product.slug] ?? 0;
@@ -127,6 +135,7 @@ export default function ProductOrderCard({ product, index }: ProductOrderCardPro
           {/* Color selector */}
           <ProductColorSelector
             colors={product.colors}
+            selectedColor={selectedColor}
             onColorChange={(color) => handleColorChange(color)}
           />
 

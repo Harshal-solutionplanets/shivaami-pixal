@@ -40,7 +40,7 @@ export default function ProductHero({ product }: ProductHeroProps) {
             <span className="font-medium text-foreground">{product.name}</span>
           </div>
           <Link
-            href="/marketplace"
+            href={`/marketplace?model=${product.slug}&color=${encodeURIComponent(selectedColor.name)}`}
             className={cn(
               buttonVariants({ size: "sm" }),
               "rounded-full bg-primary hover:bg-primary/90 text-white gap-1.5 text-xs"
@@ -115,6 +115,7 @@ export default function ProductHero({ product }: ProductHeroProps) {
           <div className="mb-8 flex justify-center lg:justify-start">
             <ProductColorSelector
               colors={product.colors}
+              selectedColor={selectedColor}
               onColorChange={(color) => setSelectedColor(color)}
             />
           </div>
@@ -134,7 +135,7 @@ export default function ProductHero({ product }: ProductHeroProps) {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
             <Link
-              href="/marketplace"
+              href={`/marketplace?model=${product.slug}&color=${encodeURIComponent(selectedColor.name)}`}
               className={cn(
                 buttonVariants({ size: "lg" }),
                 "rounded-full px-8 h-12 font-semibold bg-primary hover:bg-primary/90 text-white gap-2 shadow-lg shadow-primary/20"

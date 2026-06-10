@@ -1,6 +1,26 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 
 export default function FloatingWhatsApp() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleMenuToggle = (e: Event) => {
+      const customEvent = e as CustomEvent<{ open: boolean }>;
+      setIsMenuOpen(!!customEvent.detail?.open);
+    };
+
+    window.addEventListener("menu-toggle", handleMenuToggle);
+    return () => {
+      window.removeEventListener("menu-toggle", handleMenuToggle);
+    };
+  }, []);
+
+  if (isMenuOpen) {
+    return null;
+  }
+
   return (
     <a
       href="https://wa.me/919022223600?text=Hi%20tax%20print%20%26%20shivaami%2C%20I%27m%20interested%20in%20Google%20Pixel%20for%20Business"

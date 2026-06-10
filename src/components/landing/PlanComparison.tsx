@@ -127,22 +127,22 @@ export default function PlanComparison() {
         <div className="bg-white rounded-3xl border border-border/60 overflow-hidden shadow-sm">
           {/* Table Header */}
           <div className="grid grid-cols-3 border-b border-border">
-            <div className="p-5 col-span-1" />
-            <div className="p-5 text-center border-l border-border">
-              <div className="inline-flex items-center gap-1.5 mb-1">
-                <div className="flex gap-0.5">
+            <div className="p-2 sm:p-5 col-span-1" />
+            <div className="p-2 sm:p-5 text-center border-l border-border flex flex-col items-center justify-center">
+              <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-1.5 mb-1 text-center">
+                <div className="hidden sm:flex gap-0.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#4285F4]" />
                   <span className="w-1.5 h-1.5 rounded-full bg-[#EA4335]" />
                   <span className="w-1.5 h-1.5 rounded-full bg-[#FBBC05]" />
                   <span className="w-1.5 h-1.5 rounded-full bg-[#34A853]" />
                 </div>
-                <span className="font-bold text-sm text-foreground"><BrandText />{" "}Business</span>
+                <span className="font-bold text-xs sm:text-sm text-foreground leading-tight"><BrandText />{" "}Business</span>
               </div>
-              <p className="text-xs text-primary font-medium">via Pixel for Business</p>
+              <p className="text-[10px] sm:text-xs text-primary font-medium">via Pixel for Business</p>
             </div>
-            <div className="p-5 text-center border-l border-border">
-              <p className="font-semibold text-sm text-muted-foreground">Retail Purchase</p>
-              <p className="text-xs text-muted-foreground/70 mt-0.5">Any store</p>
+            <div className="p-2 sm:p-5 text-center border-l border-border flex flex-col items-center justify-center">
+              <p className="font-semibold text-xs sm:text-sm text-muted-foreground leading-tight">Retail Purchase</p>
+              <p className="text-[10px] sm:text-xs text-muted-foreground/70 mt-0.5">Any store</p>
             </div>
           </div>
 
@@ -154,28 +154,28 @@ export default function PlanComparison() {
                 i % 2 === 0 ? "bg-white" : "bg-muted/20"
               }`}
             >
-              <div className="p-4 pl-5 flex items-center">
-                <span className="text-sm text-foreground/80">{formatBrandText(row.feature)}</span>
+              <div className="p-2.5 sm:p-4 pl-3 sm:pl-5 flex items-center">
+                <span className="text-xs sm:text-sm text-foreground/80">{formatBrandText(row.feature)}</span>
               </div>
-              <div className="p-4 flex items-center justify-center border-l border-border/50">
+              <div className="p-2.5 sm:p-4 flex items-center justify-center border-l border-border/50">
                 {row.business ? (
-                  <div className="w-6 h-6 rounded-full bg-[#E6F4EA] flex items-center justify-center">
-                    <Check className="w-3.5 h-3.5 text-[#1E8E3E]" strokeWidth={2.5} />
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#E6F4EA] flex items-center justify-center shrink-0">
+                    <Check className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#1E8E3E]" strokeWidth={2.5} />
                   </div>
                 ) : (
-                  <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center">
-                    <X className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={2} />
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-muted flex items-center justify-center shrink-0">
+                    <X className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-muted-foreground" strokeWidth={2} />
                   </div>
                 )}
               </div>
-              <div className="p-4 flex items-center justify-center border-l border-border/50">
+              <div className="p-2.5 sm:p-4 flex items-center justify-center border-l border-border/50">
                 {row.retail ? (
-                  <div className="w-6 h-6 rounded-full bg-[#E6F4EA] flex items-center justify-center">
-                    <Check className="w-3.5 h-3.5 text-[#1E8E3E]" strokeWidth={2.5} />
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#E6F4EA] flex items-center justify-center shrink-0">
+                    <Check className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#1E8E3E]" strokeWidth={2.5} />
                   </div>
                 ) : (
-                  <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center">
-                    <X className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={2} />
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-muted flex items-center justify-center shrink-0">
+                    <X className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-muted-foreground" strokeWidth={2} />
                   </div>
                 )}
               </div>

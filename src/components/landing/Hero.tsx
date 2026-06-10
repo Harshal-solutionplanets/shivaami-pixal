@@ -167,7 +167,7 @@ export default function Hero() {
 
               {/* 1 Year Extended warranty — top-left (Swapped) */}
               <div
-                className="absolute top-2 left-0 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-float"
+                className="absolute top-2 left-0 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 hidden md:flex items-center gap-3 animate-float"
                 style={{ animationDelay: "0s" }}
               >
                 <div className="w-9 h-9 rounded-xl bg-[#E0F7FA] flex items-center justify-center shrink-0">
@@ -181,7 +181,7 @@ export default function Hero() {
 
               {/* GST Benefits — middle-left */}
               <div
-                className="absolute top-[28%] -left-8 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-float-slow"
+                className="absolute top-[28%] -left-8 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 hidden md:flex items-center gap-3 animate-float-slow"
                 style={{ animationDelay: "1.5s" }}
               >
                 <div className="w-9 h-9 rounded-xl bg-[#E6F4EA] flex items-center justify-center shrink-0">
@@ -195,7 +195,7 @@ export default function Hero() {
 
               {/* Gemini AI — lower-left (Swapped) */}
               <div
-                className="absolute top-[62%] -left-8 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-float"
+                className="absolute top-[62%] left-2 md:-left-8 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-float"
                 style={{ animationDelay: "0.4s" }}
               >
                 <div className="w-9 h-9 rounded-xl bg-[#E8D5FF] flex items-center justify-center shrink-0">
@@ -209,7 +209,7 @@ export default function Hero() {
 
               {/* Camera Coach — top-right */}
               <div
-                className="absolute top-3 right-6 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-3 py-2.5 flex items-center gap-2 animate-float-slow"
+                className="absolute top-3 right-6 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-3 py-2.5 hidden md:flex items-center gap-2 animate-float-slow"
                 style={{ animationDelay: "1.2s" }}
               >
                 <div className="w-8 h-8 rounded-xl bg-[#FEF0CD] flex items-center justify-center shrink-0">
@@ -225,21 +225,21 @@ export default function Hero() {
 
               {/* 2-Year Protection — bottom-left */}
               <div
-                className="absolute bottom-2 left-0 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-float-reverse"
+                className="absolute bottom-2 left-2 md:left-0 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-float-reverse"
                 style={{ animationDelay: "0.5s" }}
               >
                 <div className="w-9 h-9 rounded-xl bg-[#D2E3FC] flex items-center justify-center shrink-0">
                   <Shield className="w-4 h-4 text-[#1A73E8]" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-foreground leading-none">2-Year Comprehensive Device Protection</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">Water · Warranty</p>
+                  <p className="text-xs font-bold text-foreground leading-none">2-Years Comprehensive Device Protection</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Accidental · Liquid</p>
                 </div>
               </div>
 
               {/* Call Assist — bottom-right */}
               <div
-                className="absolute bottom-3 right-6 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-3 py-2.5 flex items-center gap-2 animate-float"
+                className="absolute bottom-3 right-6 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-3 py-2.5 hidden md:flex items-center gap-2 animate-float"
                 style={{ animationDelay: "0.8s" }}
               >
                 <div className="w-8 h-8 rounded-xl bg-[#FCE8E6] flex items-center justify-center shrink-0">
@@ -254,7 +254,7 @@ export default function Hero() {
               {/* ── RIGHT EDGE chip — AI Workshops ── */}
               {/* Hangs off the right edge of the frame into section breathing room */}
               <div
-                className="absolute top-1/2 -translate-y-1/2 -right-4 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-float-slow"
+                className="absolute top-1/2 -translate-y-1/2 -right-4 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 hidden md:flex items-center gap-3 animate-float-slow"
                 style={{ animationDelay: "1s" }}
               >
                 <div className="w-9 h-9 rounded-xl bg-[#CEEAD6] flex items-center justify-center shrink-0">
