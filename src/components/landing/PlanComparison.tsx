@@ -3,6 +3,7 @@
 import { useInView } from "@/hooks/useInView";
 import { Check, X, BadgePercent, Shield, Rocket, Star, Sparkles } from "lucide-react";
 import BrandText, { formatBrandText } from "@/components/ui/BrandText";
+import BulkQuoteCTA from "@/components/ui/BulkQuoteCTA";
 
 const rows = [
   {
@@ -219,6 +220,8 @@ export default function PlanComparison() {
             </p>
           </div>
         </div>
+
+        <BulkQuoteCTA />
       </div>
     </section>
 

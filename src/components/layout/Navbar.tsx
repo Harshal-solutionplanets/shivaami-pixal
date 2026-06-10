@@ -13,7 +13,7 @@ import Logo from "@/components/ui/Logo";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Marketplace", href: "/marketplace" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {

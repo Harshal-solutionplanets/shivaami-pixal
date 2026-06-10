@@ -2,6 +2,7 @@
 
 import { useInView } from "@/hooks/useInView";
 import { Shield, Brain, Rocket, Star } from "lucide-react";
+import BulkQuoteCTA from "@/components/ui/BulkQuoteCTA";
 
 const pillars = [
   {
@@ -104,6 +105,8 @@ export default function WhyPixelBusiness() {
             ))}
           </div>
         </div>
+
+        <BulkQuoteCTA />
       </div>
     </section>
   );

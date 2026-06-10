@@ -28,7 +28,7 @@ export default function LeadsTable({ leads }: { leads: LeadRow[] }) {
         <table className="w-full text-sm min-w-[800px]">
           <thead>
             <tr className="border-b border-border/40 bg-[#FAFAFA]">
-              {["Name", "Company", "Email", "Phone", "Message", "Submitted Date"].map((h) => (
+              {["Name", "Company", "Email", "Phone", "Message", "Submitted DateTime"].map((h) => (
                 <th
                   key={h}
                   className="text-left px-6 py-3.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider"
