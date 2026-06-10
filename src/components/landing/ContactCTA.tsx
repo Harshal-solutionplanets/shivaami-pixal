@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Script from "next/script";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Mail, Phone, ArrowRight, Send, Sparkles, Star, Headphones } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function ContactCTA() {
   const [form, setForm] = useState({
@@ -15,6 +16,8 @@ export default function ContactCTA() {
     message: "",
   });
   const [errors, setErrors] = useState<{ phone?: string }>({});
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [submitting, setSubmitting] = useState(false);
   const [apiError, setApiError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
@@ -29,6 +32,12 @@ export default function ContactCTA() {
       setErrors({ phone: "10-digit phone number required" });
       return;
     }
+
+    if (!captchaToken) {
+      setApiError("Please complete the reCAPTCHA verification.");
+      return;
+    }
+
     setErrors({});
     setSubmitting(true);
 
@@ -38,7 +47,7 @@ export default function ContactCTA() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, captchaToken }),
       });
 
       const data = await res.json();
@@ -47,8 +56,12 @@ export default function ContactCTA() {
       }
 
       setSent(true);
+      recaptchaRef.current?.reset();
+      setCaptchaToken(null);
     } catch (err: any) {
       setApiError(err.message || "Failed to submit enquiry.");
+      recaptchaRef.current?.reset();
+      setCaptchaToken(null);
     } finally {
       setSubmitting(false);
     }
@@ -224,6 +237,16 @@ export default function ContactCTA() {
                     placeholder="I'm interested in getting Pixel 10 Pro for a team of 20 people..."
                     disabled={submitting}
                     className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition resize-none disabled:opacity-60"
+                  />
+                </div>
+                <div className="flex justify-center py-2">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY!}
+                    onChange={(token) => {
+                      setCaptchaToken(token);
+                      setApiError(null);
+                    }}
                   />
                 </div>
                 {apiError && (

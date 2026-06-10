@@ -3,7 +3,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, company, email, phone, message } = await req.json();
+    const { name, company, email, phone, message, captchaToken } = await req.json();
 
     // Validate inputs
     if (!name?.trim() || !company?.trim() || !email?.trim() || !phone?.trim() || !message?.trim()) {
@@ -17,6 +17,31 @@ export async function POST(req: NextRequest) {
     if (!/^\d{10}$/.test(cleanPhone)) {
       return NextResponse.json(
         { error: "Invalid 10-digit phone number" },
+        { status: 400 }
+      );
+    }
+
+    if (!captchaToken) {
+      return NextResponse.json(
+        { error: "reCAPTCHA verification is required" },
+        { status: 400 }
+      );
+    }
+
+    // Verify reCAPTCHA token
+    const verifyResponse = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: `secret=${process.env.CAPTCHA_SECRET_KEY}&response=${captchaToken}`,
+    });
+
+    const verifyData = await verifyResponse.json();
+    if (!verifyData.success) {
+      console.error("reCAPTCHA validation failed:", verifyData);
+      return NextResponse.json(
+        { error: "reCAPTCHA verification failed. Please try again." },
         { status: 400 }
       );
     }
