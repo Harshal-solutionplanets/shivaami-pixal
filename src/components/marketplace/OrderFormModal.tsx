@@ -70,6 +70,7 @@ export default function OrderFormModal({
   const { items, clearCart } = useCart();
   const [form, setForm] = useState<OrderForm>(initialForm);
   const [errors, setErrors] = useState<Partial<Record<keyof OrderForm, string>>>({});
+  const [sameAsBilling, setSameAsBilling] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [apiError, setApiError] = useState<string | null>(null);
 
@@ -83,10 +84,30 @@ export default function OrderFormModal({
   if (!open) return null;
 
   function update<K extends keyof OrderForm>(key: K, value: OrderForm[K]) {
-    setForm((prev) => ({ ...prev, [key]: value }));
-    setErrors((prev) => ({ ...prev, [key]: undefined }));
+    setForm((prev) => {
+      const next = { ...prev, [key]: value };
+      if (key === "billingAddress" && sameAsBilling) {
+        next.shippingAddress = value as string;
+      }
+      return next;
+    });
+    setErrors((prev) => {
+      const nextErrors = { ...prev, [key]: undefined };
+      if (key === "billingAddress" && sameAsBilling) {
+        nextErrors.shippingAddress = undefined;
+      }
+      return nextErrors;
+    });
     setApiError(null);
   }
+
+  const handleSameAsBillingChange = (checked: boolean) => {
+    setSameAsBilling(checked);
+    if (checked) {
+      setForm((prev) => ({ ...prev, shippingAddress: prev.billingAddress }));
+      setErrors((prev) => ({ ...prev, shippingAddress: undefined }));
+    }
+  };
 
   async function submitInvoiceOrder() {
     const res = await fetch("/api/orders", {
@@ -313,21 +334,36 @@ export default function OrderFormModal({
                 disabled={submitting}
               />
               <Field
-                label="Shipping Address *"
-                value={form.shippingAddress}
-                onChange={(v) => update("shippingAddress", v)}
-                error={errors.shippingAddress}
-                placeholder="mohan building, opp my cafe, kurla,400070"
-                disabled={submitting}
-              />
-              <Field
                 label="Billing Address *"
                 value={form.billingAddress}
                 onChange={(v) => update("billingAddress", v)}
                 error={errors.billingAddress}
-                placeholder="Same as shipping address or new"
+                placeholder="Enter billing address for invoice"
                 disabled={submitting}
               />
+              <div className="flex flex-col gap-1.5">
+                <div className="flex items-center gap-2 mt-1">
+                  <input
+                    type="checkbox"
+                    id="sameAsBilling"
+                    checked={sameAsBilling}
+                    onChange={(e) => handleSameAsBillingChange(e.target.checked)}
+                    disabled={submitting}
+                    className="w-4 h-4 rounded text-primary focus:ring-primary/30 border-border bg-background cursor-pointer"
+                  />
+                  <label htmlFor="sameAsBilling" className="text-xs font-semibold text-foreground cursor-pointer select-none">
+                    Same as billing address
+                  </label>
+                </div>
+                <Field
+                  label="Shipping Address *"
+                  value={form.shippingAddress}
+                  onChange={(v) => update("shippingAddress", v)}
+                  error={errors.shippingAddress}
+                  placeholder="mohan building, opp my cafe, kurla,400070"
+                  disabled={submitting || sameAsBilling}
+                />
+              </div>
               <div className="sm:col-span-2">
                 <label className="block text-xs font-medium text-foreground mb-1.5">
                   Additional Notes
