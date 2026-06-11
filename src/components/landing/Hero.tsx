@@ -27,7 +27,8 @@ const FLOATING_CARDS = [
     title: "1 Year Extended warranty",
     desc: "Total 2 years of manufacturer warranty coverage",
     delay: "0s",
-    positionClass: "top-2 left-2 md:left-0",
+    mobileClass: "top-2 left-2",
+    desktopClass: "md:top-2 md:left-0",
     animationClass: "animate-float"
   },
   {
@@ -37,7 +38,8 @@ const FLOATING_CARDS = [
     title: "SMB Pricing",
     desc: "with GST benefits",
     delay: "1.5s",
-    positionClass: "top-[18%] left-2 md:-left-8",
+    mobileClass: "top-[18%] left-2",
+    desktopClass: "md:top-[28%] md:-left-8",
     animationClass: "animate-float-slow"
   },
   {
@@ -47,7 +49,8 @@ const FLOATING_CARDS = [
     title: "Gemini AI",
     desc: "Built right in",
     delay: "0.4s",
-    positionClass: "top-[34%] left-2 md:-left-8",
+    mobileClass: "top-[34%] left-2",
+    desktopClass: "md:top-[62%] md:-left-8",
     animationClass: "animate-float"
   },
   {
@@ -57,7 +60,8 @@ const FLOATING_CARDS = [
     title: "Camera Coach",
     desc: "Pro shots, anyone",
     delay: "1.2s",
-    positionClass: "top-3 right-2 md:right-6",
+    mobileClass: "top-3 right-2",
+    desktopClass: "md:top-3 md:right-6",
     animationClass: "animate-float-slow"
   },
   {
@@ -67,7 +71,8 @@ const FLOATING_CARDS = [
     title: "2-Years Comprehensive Device Protection",
     desc: "Accidental · Liquid",
     delay: "0.5s",
-    positionClass: "bottom-2 left-2 md:left-0",
+    mobileClass: "bottom-2 left-2",
+    desktopClass: "md:bottom-2 md:left-0",
     animationClass: "animate-float-reverse"
   },
   {
@@ -77,7 +82,8 @@ const FLOATING_CARDS = [
     title: "Call Assist",
     desc: "Live transcripts",
     delay: "0.8s",
-    positionClass: "bottom-3 right-2 md:right-6",
+    mobileClass: "bottom-3 right-2",
+    desktopClass: "md:bottom-3 md:right-6",
     animationClass: "animate-float"
   },
   {
@@ -87,7 +93,8 @@ const FLOATING_CARDS = [
     title: "AI Workshops",
     desc: "Free for your team",
     delay: "1s",
-    positionClass: "top-[22%] right-2 md:-right-4",
+    mobileClass: "top-[22%] right-2 translate-y-0",
+    desktopClass: "md:top-1/2 md:-translate-y-1/2 md:-right-4",
     animationClass: "animate-float-slow"
   }
 ];
@@ -246,7 +253,8 @@ export default function Hero() {
                       "absolute bg-white/95 backdrop-blur rounded-2xl shadow-xl flex items-center transition-all duration-300",
                       // Mobile layout: small size, compact padding
                       "p-1.5 gap-1.5 w-[135px] sm:w-[155px] md:w-auto md:p-4 md:gap-3",
-                      card.positionClass,
+                      card.mobileClass,
+                      card.desktopClass,
                       card.animationClass
                     )}
                     style={{ animationDelay: card.delay }}
