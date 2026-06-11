@@ -19,6 +19,79 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+const FLOATING_CARDS = [
+  {
+    icon: ShieldCheck,
+    iconColor: "text-[#00838F]",
+    bgColor: "bg-[#E0F7FA]",
+    title: "1 Year Extended warranty",
+    desc: "Total 2 years of manufacturer warranty coverage",
+    delay: "0s",
+    positionClass: "top-2 left-2 md:left-0",
+    animationClass: "animate-float"
+  },
+  {
+    icon: Banknote,
+    iconColor: "text-[#137333]",
+    bgColor: "bg-[#E6F4EA]",
+    title: "SMB Pricing",
+    desc: "with GST benefits",
+    delay: "1.5s",
+    positionClass: "top-[18%] left-2 md:-left-8",
+    animationClass: "animate-float-slow"
+  },
+  {
+    icon: Sparkles,
+    iconColor: "text-[#7C3AED]",
+    bgColor: "bg-[#E8D5FF]",
+    title: "Gemini AI",
+    desc: "Built right in",
+    delay: "0.4s",
+    positionClass: "top-[34%] left-2 md:-left-8",
+    animationClass: "animate-float"
+  },
+  {
+    icon: Camera,
+    iconColor: "text-[#F9AB00]",
+    bgColor: "bg-[#FEF0CD]",
+    title: "Camera Coach",
+    desc: "Pro shots, anyone",
+    delay: "1.2s",
+    positionClass: "top-3 right-2 md:right-6",
+    animationClass: "animate-float-slow"
+  },
+  {
+    icon: Shield,
+    iconColor: "text-[#1A73E8]",
+    bgColor: "bg-[#D2E3FC]",
+    title: "2-Years Comprehensive Device Protection",
+    desc: "Accidental · Liquid",
+    delay: "0.5s",
+    positionClass: "bottom-2 left-2 md:left-0",
+    animationClass: "animate-float-reverse"
+  },
+  {
+    icon: PhoneCall,
+    iconColor: "text-[#EA4335]",
+    bgColor: "bg-[#FCE8E6]",
+    title: "Call Assist",
+    desc: "Live transcripts",
+    delay: "0.8s",
+    positionClass: "bottom-3 right-2 md:right-6",
+    animationClass: "animate-float"
+  },
+  {
+    icon: BrainCircuit,
+    iconColor: "text-[#1E8E3E]",
+    bgColor: "bg-[#CEEAD6]",
+    title: "AI Workshops",
+    desc: "Free for your team",
+    delay: "1s",
+    positionClass: "top-[22%] right-2 md:-right-4",
+    animationClass: "animate-float-slow"
+  }
+];
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-[#FFF9F0] pt-24">
@@ -163,108 +236,41 @@ export default function Hero() {
                 />
               </div>
 
-              {/* ── TOP ZONE chips (above the image frame) ── */}
-
-              {/* 1 Year Extended warranty — top-left (Swapped) */}
-              <div
-                className="absolute top-2 left-0 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 hidden md:flex items-center gap-3 animate-float"
-                style={{ animationDelay: "0s" }}
-              >
-                <div className="w-9 h-9 rounded-xl bg-[#E0F7FA] flex items-center justify-center shrink-0">
-                  <ShieldCheck className="w-4 h-4 text-[#00838F]" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-foreground leading-none">1 Year Extended warranty</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">Total 2 years of manufacturer warranty coverage</p>
-                </div>
-              </div>
-
-              {/* GST Benefits — middle-left */}
-              <div
-                className="absolute top-[28%] -left-8 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 hidden md:flex items-center gap-3 animate-float-slow"
-                style={{ animationDelay: "1.5s" }}
-              >
-                <div className="w-9 h-9 rounded-xl bg-[#E6F4EA] flex items-center justify-center shrink-0">
-                  <Banknote className="w-4 h-4 text-[#137333]" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-foreground leading-none">SMB Pricing</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">with GST benefits</p>
-                </div>
-              </div>
-
-              {/* Gemini AI — lower-left (Swapped) */}
-              <div
-                className="absolute top-[62%] left-2 md:-left-8 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-float"
-                style={{ animationDelay: "0.4s" }}
-              >
-                <div className="w-9 h-9 rounded-xl bg-[#E8D5FF] flex items-center justify-center shrink-0">
-                  <Sparkles className="w-4 h-4 text-[#7C3AED]" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-foreground leading-none">Gemini AI</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">Built right in</p>
-                </div>
-              </div>
-
-              {/* Camera Coach — top-right */}
-              <div
-                className="absolute top-3 right-6 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-3 py-2.5 hidden md:flex items-center gap-2 animate-float-slow"
-                style={{ animationDelay: "1.2s" }}
-              >
-                <div className="w-8 h-8 rounded-xl bg-[#FEF0CD] flex items-center justify-center shrink-0">
-                  <Camera className="w-4 h-4 text-[#F9AB00]" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-foreground leading-none">Camera Coach</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">Pro shots, anyone</p>
-                </div>
-              </div>
-
-              {/* ── BOTTOM ZONE chips (below the image frame) ── */}
-
-              {/* 2-Year Protection — bottom-left */}
-              <div
-                className="absolute bottom-2 left-2 md:left-0 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-float-reverse"
-                style={{ animationDelay: "0.5s" }}
-              >
-                <div className="w-9 h-9 rounded-xl bg-[#D2E3FC] flex items-center justify-center shrink-0">
-                  <Shield className="w-4 h-4 text-[#1A73E8]" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-foreground leading-none">2-Years Comprehensive Device Protection</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">Accidental · Liquid</p>
-                </div>
-              </div>
-
-              {/* Call Assist — bottom-right */}
-              <div
-                className="absolute bottom-3 right-6 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-3 py-2.5 hidden md:flex items-center gap-2 animate-float"
-                style={{ animationDelay: "0.8s" }}
-              >
-                <div className="w-8 h-8 rounded-xl bg-[#FCE8E6] flex items-center justify-center shrink-0">
-                  <PhoneCall className="w-4 h-4 text-[#EA4335]" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-foreground leading-none">Call Assist</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">Live transcripts</p>
-                </div>
-              </div>
-
-              {/* ── RIGHT EDGE chip — AI Workshops ── */}
-              {/* Hangs off the right edge of the frame into section breathing room */}
-              <div
-                className="absolute top-1/2 -translate-y-1/2 -right-4 bg-white/95 backdrop-blur rounded-2xl shadow-xl px-4 py-3 hidden md:flex items-center gap-3 animate-float-slow"
-                style={{ animationDelay: "1s" }}
-              >
-                <div className="w-9 h-9 rounded-xl bg-[#CEEAD6] flex items-center justify-center shrink-0">
-                  <BrainCircuit className="w-4 h-4 text-[#1E8E3E]" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-foreground leading-none">AI Workshops</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">Free for your team</p>
-                </div>
-              </div>
+              {/* ── FLOATING CHIPS (Dynamic & Responsive) ── */}
+              {FLOATING_CARDS.map((card, idx) => {
+                const Icon = card.icon;
+                return (
+                  <div
+                    key={idx}
+                    className={cn(
+                      "absolute bg-white/95 backdrop-blur rounded-2xl shadow-xl flex items-center transition-all duration-300",
+                      // Mobile layout: small size, compact padding
+                      "p-1.5 gap-1.5 w-[135px] sm:w-[155px] md:w-auto md:p-4 md:gap-3",
+                      card.positionClass,
+                      card.animationClass
+                    )}
+                    style={{ animationDelay: card.delay }}
+                  >
+                    <div
+                      className={cn(
+                        "rounded-xl flex items-center justify-center shrink-0",
+                        "w-7 h-7 md:w-9 md:h-9",
+                        card.bgColor
+                      )}
+                    >
+                      <Icon className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[9px] md:text-xs font-bold text-foreground leading-tight truncate md:whitespace-normal md:leading-none">
+                        {card.title}
+                      </p>
+                      <p className="text-[8px] md:text-xs text-muted-foreground mt-0.5 leading-tight truncate md:whitespace-normal">
+                        {card.desc}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
 
             </div>
 

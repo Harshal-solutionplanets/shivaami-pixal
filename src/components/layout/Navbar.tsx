@@ -214,6 +214,13 @@ export default function Navbar() {
                 ))}
               </nav>
               <div className="flex flex-col gap-3">
+                <a
+                  href="tel:+919022223600"
+                  className="flex items-center justify-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors mb-1"
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  +91 90 2222 3600
+                </a>
                 <Link
                   href="/marketplace"
                   onClick={() => setOpen(false)}
