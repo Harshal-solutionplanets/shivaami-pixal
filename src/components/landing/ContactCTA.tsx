@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Script from "next/script";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Mail, Phone, ArrowRight, Send, Sparkles, Star, Headphones } from "lucide-react";
+import { MessageCircle, Mail, Phone, ArrowRight, Send, Sparkles, Star, Headphones, Copy, Check, ExternalLink } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -21,6 +21,31 @@ export default function ContactCTA() {
   const [submitting, setSubmitting] = useState(false);
   const [apiError, setApiError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
+
+  const [showEmailOptions, setShowEmailOptions] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsMobile(/Mobi|Android|iPhone/i.test(navigator.userAgent));
+    
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowEmailOptions(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText("pixel@shivaami.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -117,19 +142,91 @@ export default function ContactCTA() {
                 <ArrowRight className="w-4 h-4 text-muted-foreground ml-auto group-hover:text-[#25D366] group-hover:translate-x-0.5 transition-all" />
               </a>
 
-              <a
-                href="mailto:pixel@shivaami.com"
-                className="flex items-center gap-4 p-4 bg-white rounded-2xl border border-border/60 hover:border-primary/40 hover:shadow-sm transition-all group"
-              >
-                <div className="w-10 h-10 rounded-full bg-[#D2E3FC] flex items-center justify-center shrink-0">
-                  <Mail className="w-5 h-5 text-primary" />
+              {isMobile ? (
+                <a
+                  href="mailto:pixel@shivaami.com"
+                  className="flex items-center gap-4 p-4 bg-white rounded-2xl border border-border/60 hover:border-primary/40 hover:shadow-sm transition-all group"
+                >
+                  <div className="w-10 h-10 rounded-full bg-[#D2E3FC] flex items-center justify-center shrink-0">
+                    <Mail className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-sm text-foreground">Email</p>
+                    <p className="text-sm text-muted-foreground">pixel@shivaami.com</p>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-muted-foreground ml-auto group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+                </a>
+              ) : (
+                <div className="relative" ref={dropdownRef}>
+                  <button
+                    onClick={() => setShowEmailOptions(!showEmailOptions)}
+                    className="w-full flex items-center gap-4 p-4 bg-white rounded-2xl border border-border/60 hover:border-primary/40 hover:shadow-sm transition-all group text-left"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-[#D2E3FC] flex items-center justify-center shrink-0">
+                      <Mail className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm text-foreground">Email</p>
+                      <p className="text-sm text-muted-foreground">pixel@shivaami.com</p>
+                    </div>
+                    <ArrowRight className={`w-4 h-4 text-muted-foreground ml-auto group-hover:text-primary transition-all duration-200 ${
+                      showEmailOptions ? "rotate-90 text-primary" : "group-hover:translate-x-0.5"
+                    }`} />
+                  </button>
+
+                  {/* Dropdown Options */}
+                  {showEmailOptions && (
+                    <div className="absolute top-[calc(100%+8px)] left-0 right-0 z-50 p-2 bg-white rounded-2xl border border-border/80 shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
+                      <div className="flex flex-col gap-1">
+                        <a
+                          href="https://mail.google.com/mail/?view=cm&fs=1&to=pixel@shivaami.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setShowEmailOptions(false)}
+                          className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors text-sm font-medium text-foreground group/item"
+                        >
+                          <div className="w-7 h-7 rounded-lg bg-[#EA4335]/10 flex items-center justify-center text-[#EA4335] shrink-0 font-bold text-xs">
+                            G
+                          </div>
+                          <div className="flex-1">
+                            <p className="font-semibold text-xs text-foreground">Compose in Gmail</p>
+                            <p className="text-[10px] text-muted-foreground">Opens in a new browser tab</p>
+                          </div>
+                          <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover/item:text-[#EA4335] transition-colors" />
+                        </a>
+
+                        <a
+                          href="mailto:pixel@shivaami.com"
+                          onClick={() => setShowEmailOptions(false)}
+                          className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors text-sm font-medium text-foreground group/item"
+                        >
+                          <div className="w-7 h-7 rounded-lg bg-[#4285F4]/10 flex items-center justify-center text-[#4285F4] shrink-0">
+                            <Mail className="w-4 h-4" />
+                          </div>
+                          <div className="flex-1">
+                            <p className="font-semibold text-xs text-foreground">Open Default Mail App</p>
+                            <p className="text-[10px] text-muted-foreground">Outlook, Mail, or system client</p>
+                          </div>
+                          <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover/item:text-[#4285F4] transition-colors" />
+                        </a>
+
+                        <button
+                          onClick={handleCopy}
+                          className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors text-sm font-medium text-foreground text-left group/item"
+                        >
+                          <div className="w-7 h-7 rounded-lg bg-[#F9AB00]/10 flex items-center justify-center text-[#F9AB00] shrink-0">
+                            {copied ? <Check className="w-4 h-4 text-[#1E8E3E]" /> : <Copy className="w-4 h-4" />}
+                          </div>
+                          <div className="flex-1">
+                            <p className="font-semibold text-xs text-foreground">{copied ? "Copied!" : "Copy Email Address"}</p>
+                            <p className="text-[10px] text-muted-foreground">{copied ? "Address copied to clipboard" : "Copy to clipboard directly"}</p>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <div>
-                  <p className="font-semibold text-sm text-foreground">Email</p>
-                  <p className="text-sm text-muted-foreground">pixel@shivaami.com</p>
-                </div>
-                <ArrowRight className="w-4 h-4 text-muted-foreground ml-auto group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
-              </a>
+              )}
 
               <a
                 href="tel:+919022223600"
