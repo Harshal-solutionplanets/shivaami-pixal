@@ -158,62 +158,64 @@ export default function Navbar() {
                 <Menu className="w-5 h-5" />
               </span>
             </SheetTrigger>
-            <SheetContent side="right" className="w-72 p-6">
-              <div className="flex items-center justify-between mb-8">
-                <Logo className="scale-90 origin-left" />
+            <SheetContent side="right" className="w-80 p-5 flex flex-col h-full">
+              <div className="flex items-start justify-between shrink-0 mb-4">
+                <Logo className="scale-[0.78] origin-top-left" />
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="rounded-full"
+                  className="rounded-full shrink-0 -mt-1 -mr-1.5"
                   onClick={() => setOpen(false)}
                 >
                   <X className="w-4 h-4" />
                 </Button>
               </div>
-              <nav className="flex flex-col gap-1 mb-8">
-                <Link
-                  href="/"
-                  onClick={() => setOpen(false)}
-                  className="px-4 py-3 text-base font-medium rounded-xl hover:bg-muted transition-colors"
-                >
-                  Home
-                </Link>
-
-                {/* Products with sub-links */}
-                <div>
+              <div className="flex-1 overflow-y-auto pr-1 -mr-1">
+                <nav className="flex flex-col gap-0.5 py-2">
                   <Link
-                    href="/products"
+                    href="/"
                     onClick={() => setOpen(false)}
-                    className="px-4 py-3 text-base font-medium rounded-xl hover:bg-muted transition-colors block"
+                    className="px-4 py-2.5 text-base font-medium rounded-xl hover:bg-muted transition-colors"
                   >
-                    Products
+                    Home
                   </Link>
-                  <div className="ml-4 mt-0.5 flex flex-col gap-0.5">
-                    {products.map((product) => (
-                      <Link
-                        key={product.slug}
-                        href={`/products/${product.slug}`}
-                        onClick={() => setOpen(false)}
-                        className="px-4 py-2 text-sm text-muted-foreground font-medium rounded-xl hover:bg-muted hover:text-foreground transition-colors"
-                      >
-                        {product.name}
-                      </Link>
-                    ))}
+
+                  {/* Products with sub-links */}
+                  <div>
+                    <Link
+                      href="/products"
+                      onClick={() => setOpen(false)}
+                      className="px-4 py-2.5 text-base font-medium rounded-xl hover:bg-muted transition-colors block"
+                    >
+                      Products
+                    </Link>
+                    <div className="ml-4 mt-0.5 flex flex-col gap-0.5">
+                      {products.map((product) => (
+                        <Link
+                          key={product.slug}
+                          href={`/products/${product.slug}`}
+                          onClick={() => setOpen(false)}
+                          className="px-4 py-2 text-sm text-muted-foreground font-medium rounded-xl hover:bg-muted hover:text-foreground transition-colors"
+                        >
+                          {product.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                {navLinks.slice(1).map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="px-4 py-3 text-base font-medium rounded-xl hover:bg-muted transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </nav>
-              <div className="flex flex-col gap-3">
+                  {navLinks.slice(1).map((link) => (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="px-4 py-2.5 text-base font-medium rounded-xl hover:bg-muted transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+              <div className="flex flex-col gap-2.5 shrink-0 pt-4 border-t border-border/60">
                 <a
                   href="tel:+919022223600"
                   className="flex items-center justify-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors mb-1"
@@ -226,7 +228,7 @@ export default function Navbar() {
                   onClick={() => setOpen(false)}
                   className={cn(
                     buttonVariants(),
-                    "rounded-full bg-primary text-white justify-center"
+                    "rounded-full bg-primary text-white justify-center py-2.5 h-auto text-sm"
                   )}
                 >
                   Order Now
@@ -235,7 +237,7 @@ export default function Navbar() {
                   href="https://wa.me/919022223600"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium border border-border rounded-full hover:bg-muted transition-colors"
+                  className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium border border-border rounded-full hover:bg-muted transition-colors h-auto"
                 >
                   WhatsApp Us
                 </a>
