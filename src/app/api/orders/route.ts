@@ -160,7 +160,7 @@ export async function POST(req: NextRequest) {
   // Send emails — never block the response if emails fail
   const shortId = order.id.slice(0, 8).toUpperCase();
   const resend = new Resend(process.env.RESEND_API_KEY);
-  const from = "shivaami Pixel <onboarding@resend.dev>";
+  const from = "shivaami Pixel <orders@pixel.taxprint.com>";
 
   const shivamiHtml = `
     <div style="font-family:Inter,sans-serif;max-width:600px;margin:0 auto;color:#202124">
