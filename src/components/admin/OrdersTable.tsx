@@ -1,11 +1,3 @@
-const STATUS_STYLES: Record<string, string> = {
-  pending: "bg-amber-50 text-amber-700 border-amber-200",
-  confirmed: "bg-blue-50 text-blue-700 border-blue-200",
-  shipped: "bg-purple-50 text-purple-700 border-purple-200",
-  delivered: "bg-green-50 text-green-700 border-green-200",
-  cancelled: "bg-red-50 text-red-700 border-red-200",
-};
-
 export interface OrderItemRow {
   productName: string;
   colorName: string;
@@ -58,7 +50,6 @@ export default function OrdersTable({ orders }: { orders: OrderRow[] }) {
                 "Billing Address",
                 "Products (Color) x Qty",
                 "Amount",
-                "Status",
                 "Date",
               ].map((h) => (
                 <th key={h} className="text-left px-4 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
@@ -95,11 +86,7 @@ export default function OrdersTable({ orders }: { orders: OrderRow[] }) {
                 <td className="px-4 py-3 align-top text-foreground font-medium">
                   ₹{(order.totalAmount / 100).toLocaleString("en-IN")}
                 </td>
-                <td className="px-4 py-3 align-top">
-                  <span className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full border capitalize ${STATUS_STYLES[order.status] ?? "bg-gray-50 text-gray-700 border-gray-200"}`}>
-                    {order.status}
-                  </span>
-                </td>
+
                 <td className="px-4 py-3 align-top text-muted-foreground text-xs">
                   {new Date(order.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
                 </td>
