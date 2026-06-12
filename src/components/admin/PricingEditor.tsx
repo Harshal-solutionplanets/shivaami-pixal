@@ -23,10 +23,19 @@ function PricingRow({ row }: { row: ProductPricingRow }) {
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Track the last successfully saved values — isDirty compares against these,
+  // NOT the original props. This means reverting to the initial value after a
+  // save still correctly enables the Save button.
+  const [lastSaved, setLastSaved] = useState({
+    priceInr: row.priceInr,
+    oneAssist: row.oneAssist,
+    extWarranty: row.extWarranty,
+  });
+
   const isDirty =
-    priceInr !== row.priceInr ||
-    oneAssist !== row.oneAssist ||
-    extWarranty !== row.extWarranty;
+    priceInr !== lastSaved.priceInr ||
+    oneAssist !== lastSaved.oneAssist ||
+    extWarranty !== lastSaved.extWarranty;
 
   async function handleSave() {
     setSaving(true);
@@ -47,6 +56,8 @@ function PricingRow({ row }: { row: ProductPricingRow }) {
     setSaving(false);
 
     if (res.ok) {
+      // Update lastSaved so future changes compare against the newly saved values
+      setLastSaved({ priceInr, oneAssist, extWarranty });
       setSaved(true);
       setTimeout(() => setSaved(false), 3000);
     } else {
@@ -86,7 +97,6 @@ function PricingRow({ row }: { row: ProductPricingRow }) {
               className="w-full pl-7 pr-3 py-2 border border-border/80 rounded-xl text-sm font-semibold text-foreground bg-white focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
             />
           </div>
-          <p className="text-[11px] text-muted-foreground mt-1">{formatInr(priceInr)}</p>
         </div>
 
         {/* OneAssist */}
@@ -105,7 +115,6 @@ function PricingRow({ row }: { row: ProductPricingRow }) {
               className="w-full pl-7 pr-3 py-2 border border-border/80 rounded-xl text-sm font-semibold text-foreground bg-white focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
             />
           </div>
-          <p className="text-[11px] text-muted-foreground mt-1">{formatInr(oneAssist)}</p>
         </div>
 
         {/* Extended Warranty */}
@@ -124,7 +133,6 @@ function PricingRow({ row }: { row: ProductPricingRow }) {
               className="w-full pl-7 pr-3 py-2 border border-border/80 rounded-xl text-sm font-semibold text-foreground bg-white focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
             />
           </div>
-          <p className="text-[11px] text-muted-foreground mt-1">{formatInr(extWarranty)}</p>
         </div>
       </div>
 

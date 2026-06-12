@@ -14,8 +14,8 @@ const quickLinks = [
   { label: "Home", href: "/" },
   { label: "Products", href: "/products" },
   { label: "Marketplace", href: "/marketplace" },
-  { label: "Contact", href: "#contact" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Contact", href: "/#contact" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 export default function Footer() {
@@ -81,7 +81,9 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="mailto:pixel@shivaami.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=pixel@shivaami.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-background/60 hover:text-background transition-colors"
                 >
                   <Mail className="w-4 h-4 shrink-0" />

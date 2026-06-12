@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     q: "How does the 2-year protection plan work?",
-    a: "The TaxPrint & Shivaami business protection plan covers accidental water damage and theft for 2 full years from purchase. Simply file a claim through our support team — we handle the replacement or repair process end-to-end so your team stays productive without interruption.",
+    a: "The TaxPrint & Shivaami business protection plan covers accidental water damage for 2 full years from purchase. Simply file a claim through our support team — we handle the replacement or repair process end-to-end so your team stays productive without interruption.",
   },
   {
     q: "What is zero-touch deployment?",
