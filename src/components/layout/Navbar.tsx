@@ -23,6 +23,18 @@ export default function Navbar() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
+  const handleHashClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/#") && pathname === "/") {
+      const hash = href.split("#")[1];
+      const element = document.getElementById(hash);
+      if (element) {
+        e.preventDefault();
+        element.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", `#${hash}`);
+      }
+    }
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -119,6 +131,7 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
+                onClick={(e) => handleHashClick(e, link.href)}
                 className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors"
               >
                 {link.label}
@@ -207,7 +220,10 @@ export default function Navbar() {
                     <Link
                       key={link.label}
                       href={link.href}
-                      onClick={() => setOpen(false)}
+                      onClick={(e) => {
+                        setOpen(false);
+                        handleHashClick(e, link.href);
+                      }}
                       className="px-4 py-2.5 text-base font-medium rounded-xl hover:bg-muted transition-colors"
                     >
                       {link.label}

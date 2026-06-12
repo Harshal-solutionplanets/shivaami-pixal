@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Mail, Phone, MessageCircle } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 import BrandText, { TaxPrintText } from "@/components/ui/BrandText";
@@ -19,6 +22,20 @@ const quickLinks = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  const handleHashClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/#") && pathname === "/") {
+      const hash = href.split("#")[1];
+      const element = document.getElementById(hash);
+      if (element) {
+        e.preventDefault();
+        element.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", `#${hash}`);
+      }
+    }
+  };
+
   return (
     <footer className="bg-foreground text-background/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -66,6 +83,7 @@ export default function Footer() {
                 <li key={l.label}>
                   <Link
                     href={l.href}
+                    onClick={(e) => handleHashClick(e, l.href)}
                     className="text-sm text-background/60 hover:text-background transition-colors"
                   >
                     {l.label}
