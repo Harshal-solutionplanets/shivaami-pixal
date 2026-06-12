@@ -18,6 +18,7 @@ export interface OrderRow {
   totalAmount: number;
   status: string;
   createdAt: string;
+  paymentId?: string | null;
 }
 
 export default function OrdersTable({ orders }: { orders: OrderRow[] }) {
@@ -40,6 +41,7 @@ export default function OrdersTable({ orders }: { orders: OrderRow[] }) {
             <tr className="border-b border-border/40 bg-[#FAFAFA]">
               {[
                 "Order ID",
+                "Payment ID",
                 "Company",
                 "Contact",
                 "Email",
@@ -64,7 +66,8 @@ export default function OrdersTable({ orders }: { orders: OrderRow[] }) {
                 key={order.id}
                 className={`border-b border-border/30 hover:bg-[#FAFAFA] transition-colors ${i % 2 === 0 ? "" : "bg-[#FAFAFA]/50"}`}
               >
-                <td className="px-4 py-3 font-mono text-xs text-muted-foreground align-top">{order.id.slice(0, 8)}…</td>
+                <td className="px-4 py-3 font-mono text-xs text-muted-foreground align-top">{order.id}</td>
+                <td className="px-4 py-3 font-mono text-xs text-muted-foreground align-top">{order.paymentId || "—"}</td>
                 <td className="px-4 py-3 align-top font-medium text-foreground">{order.companyName || "—"}</td>
                 <td className="px-4 py-3 align-top text-foreground">{order.contactName || "—"}</td>
                 <td className="px-4 py-3 align-top text-muted-foreground">{order.email || "—"}</td>

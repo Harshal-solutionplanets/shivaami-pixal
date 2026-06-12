@@ -18,7 +18,7 @@ export default async function AdminPage() {
   const [ordersResult, itemsResult] = await Promise.all([
     supabase
       .from("orders")
-      .select("id, user_id, status, total_amount, created_at, company_name, contact_name, email, phone, gst_number, city, shipping_address, billing_address")
+      .select("id, user_id, status, total_amount, created_at, company_name, contact_name, email, phone, gst_number, city, shipping_address, billing_address, razorpay_payment_id")
       .order("created_at", { ascending: false })
       .limit(100),
     supabase
@@ -69,6 +69,7 @@ export default async function AdminPage() {
       totalAmount: o.total_amount,
       status: o.status,
       createdAt: o.created_at,
+      paymentId: o.razorpay_payment_id,
     };
   });
 

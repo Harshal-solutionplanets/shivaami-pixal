@@ -43,7 +43,7 @@ export default function ProductsTeaser() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/marketplace"
             className={cn(
@@ -52,6 +52,16 @@ export default function ProductsTeaser() {
             )}
           >
             Order for Your Business
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+          <Link
+            href="/#contact"
+            className={cn(
+              buttonVariants({ size: "lg", variant: "outline" }),
+              "rounded-full px-8 h-12 text-base font-semibold text-primary border-primary/20 hover:bg-primary/5 gap-2 inline-flex items-center shadow-sm"
+            )}
+          >
+            Get a Bulk Quote Today
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
