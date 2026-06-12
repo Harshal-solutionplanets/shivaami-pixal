@@ -196,6 +196,9 @@ export async function POST(req: NextRequest) {
               </div>`
             : ""
         }
+        <div style="margin-top:28px;text-align:center">
+          <a href="https://pixel.taxprint.com/admin" style="display:inline-block;background:#4285F4;color:white;padding:12px 32px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:600">View Admin Dashboard →</a>
+        </div>
       </div>
     </div>`;
 
@@ -240,7 +243,7 @@ export async function POST(req: NextRequest) {
   await Promise.allSettled([
     resend.emails.send({
       from,
-      to: "pixel@shivaami.com",
+      to: ["jayesh.sanghavi@shivaami.com", "pixel@shivaami.com"],
       subject: `New B2B Order — ${form.companyName} · ${summary.totalQty} device(s) · ${formatInr(totalInr)}`,
       html: shivamiHtml,
     }),
