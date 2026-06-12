@@ -3,6 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import MarketplaceClient from "./MarketplaceClient";
 import { products } from "@/lib/products";
+import { fetchProductPricing } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "B2B Marketplace | tax print & shivaami — Google Pixel for Business",
@@ -17,12 +18,20 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function MarketplacePage() {
+export const dynamic = "force-dynamic";
+
+export default async function MarketplacePage() {
+  const { retailPrices, savingsValues } = await fetchProductPricing();
+
   return (
     <>
       <Navbar />
       <main>
-        <MarketplaceClient products={products} />
+        <MarketplaceClient
+          products={products}
+          retailPrices={retailPrices}
+          savingsValues={savingsValues}
+        />
       </main>
       <Footer />
     </>

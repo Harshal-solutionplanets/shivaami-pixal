@@ -10,12 +10,15 @@ import ProductOrderCard from "@/components/marketplace/ProductOrderCard";
 import OrderSummary, { MobileCartBar } from "@/components/marketplace/OrderSummary";
 import OrderFormModal from "@/components/marketplace/OrderFormModal";
 import { RETAIL_PRICES } from "@/lib/marketplace";
+import type { RetailPricesMap, SavingsValuesMap } from "@/lib/pricing";
 
 interface MarketplaceClientProps {
   products: Product[];
+  retailPrices?: RetailPricesMap;
+  savingsValues?: SavingsValuesMap;
 }
 
-function CartSyncParams({ products }: { products: Product[] }) {
+function CartSyncParams({ products, retailPrices }: { products: Product[]; retailPrices: RetailPricesMap }) {
   const { items, addItem, updateColor } = useCart();
   const hasSyncedParams = useRef(false);
 
@@ -46,7 +49,7 @@ function CartSyncParams({ products }: { products: Product[] }) {
               productName: product.name,
               color: selectedColor,
               quantity: 1,
-              unitPriceInr: RETAIL_PRICES[product.slug] ?? 0,
+              unitPriceInr: retailPrices[product.slug] ?? RETAIL_PRICES[product.slug] ?? 0,
               accentBg: product.accentBg,
               badge: product.badge,
             });
@@ -54,18 +57,21 @@ function CartSyncParams({ products }: { products: Product[] }) {
         }
       }
     }
-  }, [items, addItem, updateColor, products]);
+  }, [items, addItem, updateColor, products, retailPrices]);
 
   return null;
 }
 
-export default function MarketplaceClient({ products }: MarketplaceClientProps) {
+export default function MarketplaceClient({ products, retailPrices, savingsValues }: MarketplaceClientProps) {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Merge DB prices with hardcoded fallback
+  const effectiveRetailPrices: RetailPricesMap = retailPrices ?? RETAIL_PRICES;
+
   return (
     <CartProvider>
-      <CartSyncParams products={products} />
+      <CartSyncParams products={products} retailPrices={effectiveRetailPrices} />
       {/* Hero */}
       <section className="gradient-hero pt-32 pb-20 sm:py-20 px-4 text-center">
         <div className="max-w-3xl mx-auto">
@@ -85,7 +91,7 @@ export default function MarketplaceClient({ products }: MarketplaceClientProps) 
       </section>
 
       {/* Savings Calculator */}
-      <SavingsCalculator />
+      <SavingsCalculator retailPrices={retailPrices} savingsValues={savingsValues} />
 
       {/* Product Grid + Order Summary */}
       <section id="order-grid" className="max-w-7xl mx-auto px-4 py-16">
@@ -106,6 +112,7 @@ export default function MarketplaceClient({ products }: MarketplaceClientProps) 
                 key={product.slug}
                 product={product}
                 index={index}
+                unitPriceOverride={retailPrices?.[product.slug]}
               />
             ))}
           </div>

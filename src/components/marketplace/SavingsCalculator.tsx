@@ -3,11 +3,12 @@
 import { useCart } from "@/context/CartContext";
 import { products } from "@/lib/products";
 import {
-  RETAIL_PRICES,
+  RETAIL_PRICES as FALLBACK_RETAIL_PRICES,
+  SAVINGS_VALUES as FALLBACK_SAVINGS_VALUES,
   CORPORATE_PRICING_NOTE,
   formatInr,
-  SAVINGS_VALUES,
 } from "@/lib/marketplace";
+import type { RetailPricesMap, SavingsValuesMap } from "@/lib/pricing";
 import { useInView } from "@/hooks/useInView";
 import { formatBrandText } from "@/components/ui/BrandText";
 
@@ -57,7 +58,14 @@ const SMB_BENEFITS = [
 ];
 
 
-export default function SavingsCalculator() {
+interface SavingsCalculatorProps {
+  retailPrices?: RetailPricesMap;
+  savingsValues?: SavingsValuesMap;
+}
+
+export default function SavingsCalculator({ retailPrices: propRetailPrices, savingsValues: propSavingsValues }: SavingsCalculatorProps = {}) {
+  const RETAIL_PRICES = propRetailPrices ?? FALLBACK_RETAIL_PRICES;
+  const SAVINGS_VALUES = propSavingsValues ?? FALLBACK_SAVINGS_VALUES;
   const { ref, isVisible } = useInView(0.1);
   const { items, addItem, removeItem, updateQuantity } = useCart();
 

@@ -12,11 +12,12 @@ import { cn } from "@/lib/utils";
 interface ProductOrderCardProps {
   product: Product;
   index: number;
+  unitPriceOverride?: number;
 }
 
 const DELAY_CLASSES = ["delay-100", "delay-200", "delay-300", "delay-400"];
 
-export default function ProductOrderCard({ product, index }: ProductOrderCardProps) {
+export default function ProductOrderCard({ product, index, unitPriceOverride }: ProductOrderCardProps) {
   const { ref, isVisible } = useInView(0.1);
   const { items, addItem, removeItem, updateQuantity, updateColor } = useCart();
 
@@ -35,7 +36,7 @@ export default function ProductOrderCard({ product, index }: ProductOrderCardPro
 
   const isInCart = !!cartItem;
   const displayQty = cartItem?.quantity ?? 0;
-  const unitPrice = RETAIL_PRICES[product.slug] ?? 0;
+  const unitPrice = unitPriceOverride ?? (RETAIL_PRICES[product.slug] ?? 0);
 
   function handleColorChange(color: ProductColor) {
     setSelectedColor(color);

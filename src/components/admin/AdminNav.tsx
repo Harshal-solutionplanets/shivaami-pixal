@@ -6,28 +6,27 @@ import { usePathname } from "next/navigation";
 export default function AdminNav() {
   const pathname = usePathname();
   const isAdminLeads = pathname === "/admin/leads";
+  const isAdminPricing = pathname === "/admin/pricing";
+  const isAdminDashboard = !isAdminLeads && !isAdminPricing;
+
+  const linkClass = (active: boolean) =>
+    `text-sm font-semibold transition-colors duration-200 ${
+      active
+        ? "text-primary border-b-2 border-primary pb-0.5"
+        : "text-muted-foreground hover:text-foreground pb-0.5"
+    }`;
 
   return (
     <div className="flex items-center gap-3">
-      <Link
-        href="/admin"
-        className={`text-sm font-semibold transition-colors duration-200 ${
-          !isAdminLeads
-            ? "text-primary border-b-2 border-primary pb-0.5"
-            : "text-muted-foreground hover:text-foreground pb-0.5"
-        }`}
-      >
-        Admin Dashboard
+      <Link href="/admin" className={linkClass(isAdminDashboard)}>
+        Dashboard
       </Link>
       <span className="text-border/80">|</span>
-      <Link
-        href="/admin/leads"
-        className={`text-sm font-semibold transition-colors duration-200 ${
-          isAdminLeads
-            ? "text-primary border-b-2 border-primary pb-0.5"
-            : "text-muted-foreground hover:text-foreground pb-0.5"
-        }`}
-      >
+      <Link href="/admin/pricing" className={linkClass(isAdminPricing)}>
+        Pricing
+      </Link>
+      <span className="text-border/80">|</span>
+      <Link href="/admin/leads" className={linkClass(isAdminLeads)}>
         Contact Leads
       </Link>
     </div>
