@@ -143,6 +143,7 @@ export default function MarketplaceClient({ products, retailPrices, savingsValue
       <OrderFormModal
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        retailPrices={effectiveRetailPrices}
         onSuccess={(orderId) =>
           router.push(`/marketplace/confirmation?order=${orderId}`)
         }

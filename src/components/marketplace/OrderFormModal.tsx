@@ -10,6 +10,7 @@ interface OrderFormModalProps {
   open: boolean;
   onClose: () => void;
   onSuccess: (orderId: string) => void;
+  retailPrices?: Record<string, number>;
 }
 
 interface OrderForm {
@@ -66,6 +67,7 @@ export default function OrderFormModal({
   open,
   onClose,
   onSuccess,
+  retailPrices,
 }: OrderFormModalProps) {
   const { items, clearCart } = useCart();
   const [form, setForm] = useState<OrderForm>(initialForm);
@@ -77,7 +79,7 @@ export default function OrderFormModal({
   const calcItems = items.map((i) => ({
     slug: i.productSlug,
     quantity: i.quantity,
-    unitPriceInr: RETAIL_PRICES[i.productSlug] ?? i.unitPriceInr,
+    unitPriceInr: retailPrices?.[i.productSlug] ?? i.unitPriceInr,
   }));
   const summary = calcSavings(calcItems);
 
@@ -120,7 +122,7 @@ export default function OrderFormModal({
           productName: i.productName,
           colorName: i.color.name,
           quantity: i.quantity,
-          unitPriceInr: RETAIL_PRICES[i.productSlug] ?? i.unitPriceInr,
+          unitPriceInr: retailPrices?.[i.productSlug] ?? i.unitPriceInr,
         })),
       }),
     });
@@ -144,7 +146,7 @@ export default function OrderFormModal({
           productName: i.productName,
           colorName: i.color.name,
           quantity: i.quantity,
-          unitPriceInr: RETAIL_PRICES[i.productSlug] ?? i.unitPriceInr,
+          unitPriceInr: retailPrices?.[i.productSlug] ?? i.unitPriceInr,
         })),
         razorpayOrderId,
         razorpayPaymentId,
