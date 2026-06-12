@@ -45,32 +45,46 @@ export default function ContactCTA() {
     }
 
     setErrors({});
-    setSubmitting(true);
+    
+    // Delay setting submitting state slightly to allow the click event 
+    // to bubble up to the document level for tracking/analytics scripts (GTM, LinkedIn)
+    // before the button gets disabled and the text changes.
+    setTimeout(async () => {
+      setSubmitting(true);
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...form, captchaToken }),
+        });
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...form, captchaToken }),
-      });
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.error ?? "Failed to send enquiry. Please try again.");
+        }
 
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.error ?? "Failed to send enquiry. Please try again.");
+        // Push custom event to dataLayer for robust GTM tracking
+        if (typeof window !== "undefined") {
+          const dataLayer = (window as any).dataLayer || [];
+          dataLayer.push({
+            event: "contact_form_submit_success",
+            formId: "contact-form",
+          });
+        }
+
+        setSent(true);
+        recaptchaRef.current?.reset();
+        setCaptchaToken(null);
+      } catch (err: any) {
+        setApiError(err.message || "Failed to submit enquiry.");
+        recaptchaRef.current?.reset();
+        setCaptchaToken(null);
+      } finally {
+        setSubmitting(false);
       }
-
-      setSent(true);
-      recaptchaRef.current?.reset();
-      setCaptchaToken(null);
-    } catch (err: any) {
-      setApiError(err.message || "Failed to submit enquiry.");
-      recaptchaRef.current?.reset();
-      setCaptchaToken(null);
-    } finally {
-      setSubmitting(false);
-    }
+    }, 100);
   };
 
   const { ref, isVisible } = useInView(0.1);
@@ -277,6 +291,8 @@ export default function ContactCTA() {
                   <p className="text-xs text-center text-destructive font-medium">{apiError}</p>
                 )}
                 <Button
+                  id="contact-submit-btn"
+                  name="contact-submit-btn"
                   type="submit"
                   disabled={submitting}
                   className="w-full h-12 rounded-xl bg-primary hover:bg-primary/90 font-semibold text-base gap-2 disabled:opacity-60"
