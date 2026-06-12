@@ -160,7 +160,7 @@ export async function POST(req: NextRequest) {
   // Send emails — never block the response if emails fail
   const shortId = order.id.slice(0, 8).toUpperCase();
   const resend = new Resend(process.env.RESEND_API_KEY);
-  const from = "shivaami Pixel <orders@pixel.taxprint.com>";
+  const from = "Taxprint <orders@pixel.taxprint.com>";
 
   const shivamiHtml = `
     <div style="font-family:Inter,sans-serif;max-width:600px;margin:0 auto;color:#202124">
@@ -210,7 +210,7 @@ export async function POST(req: NextRequest) {
       </div>
       <div style="background:white;padding:32px;border:1px solid #DADCE0;border-top:none;border-radius:0 0 12px 12px">
         <p style="font-size:15px">Hi <strong>${form.contactName}</strong>,</p>
-        <p style="font-size:14px;color:#5F6368">Thank you for choosing <span style="color:#1ca0dc;font-weight:300;letter-spacing:0.02em">tax print</span> <span style="color:#5F6368;font-weight:400">x</span> <span style="color:#1ca0dc;font-family:'Vilane',sans-serif;font-weight:200">shivaami</span> for your team's Google Pixel upgrade. Here's a summary of your order:</p>
+        <p style="font-size:14px;color:#5F6368">Thank you for choosing <span style="color:#1ca0dc;font-family:'Vilane',sans-serif;font-weight:200">shivaami</span> for your team's Google Pixel upgrade. Here's a summary of your order:</p>
         ${itemsTableHtml(items)}
         <div style="margin-top:20px;padding:16px;background:#CEEAD6;border-radius:8px">
           <span style="font-size:14px">Total (${summary.discountPct}% bulk discount applied)</span>
