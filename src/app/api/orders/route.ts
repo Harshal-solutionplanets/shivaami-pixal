@@ -243,7 +243,7 @@ export async function POST(req: NextRequest) {
   await Promise.allSettled([
     resend.emails.send({
       from,
-      to: ["jayesh.sanghavi@shivaami.com", "pixel@shivaami.com"],
+      to: ["harshal.patil@solutionplanets.com", "jinesh.mehta@solutionplanets.com"],
       subject: `New B2B Order — ${form.companyName} · ${summary.totalQty} device(s) · ${formatInr(totalInr)}`,
       html: shivamiHtml,
     }),
