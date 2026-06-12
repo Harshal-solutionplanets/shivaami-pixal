@@ -26,7 +26,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
               <BrandText />
             </Link>
             <span className="text-border/80">|</span>
-            <AdminNav />
+            <AdminNav userEmail={user.email} />
           </div>
           <div className="flex items-center gap-3">
             <span className="text-xs text-muted-foreground hidden sm:block">{user.email}</span>

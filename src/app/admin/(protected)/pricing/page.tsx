@@ -15,7 +15,17 @@ const PRODUCT_LABELS: Record<string, string> = {
   "pixel-10-pro-fold": "Pixel 10 Pro Fold",
 };
 
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
+
 export default async function AdminPricingPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  const restrictedEmails = ["jayesh.sanghavi@shivaami.com", "pixel@shivaami.com"];
+  if (user && restrictedEmails.includes(user.email?.toLowerCase() ?? "")) {
+    redirect("/admin");
+  }
+
   const { rows } = await fetchProductPricing();
 
   const editorRows = rows.map((r) => ({

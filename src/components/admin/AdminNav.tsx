@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function AdminNav() {
+export default function AdminNav({ userEmail }: { userEmail?: string }) {
   const pathname = usePathname();
   const isAdminLeads = pathname === "/admin/leads";
   const isAdminPricing = pathname === "/admin/pricing";
@@ -16,15 +16,22 @@ export default function AdminNav() {
         : "text-muted-foreground hover:text-foreground pb-0.5"
     }`;
 
+  const restrictedEmails = ["jayesh.sanghavi@shivaami.com", "pixel@shivaami.com"];
+  const showPricing = !restrictedEmails.includes(userEmail?.toLowerCase() ?? "");
+
   return (
     <div className="flex items-center gap-3">
       <Link href="/admin" className={linkClass(isAdminDashboard)}>
         Dashboard
       </Link>
-      <span className="text-border/80">|</span>
-      <Link href="/admin/pricing" className={linkClass(isAdminPricing)}>
-        Pricing
-      </Link>
+      {showPricing && (
+        <>
+          <span className="text-border/80">|</span>
+          <Link href="/admin/pricing" className={linkClass(isAdminPricing)}>
+            Pricing
+          </Link>
+        </>
+      )}
       <span className="text-border/80">|</span>
       <Link href="/admin/leads" className={linkClass(isAdminLeads)}>
         Contact Leads

@@ -17,6 +17,11 @@ export async function PATCH(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  const restrictedEmails = ["jayesh.sanghavi@shivaami.com", "pixel@shivaami.com"];
+  if (restrictedEmails.includes(user.email?.toLowerCase() ?? "")) {
+    return NextResponse.json({ error: "No write access" }, { status: 403 });
+  }
+
   // Parse body
   const body = await req.json();
   const { slug, price_inr, one_assist, ext_warranty } = body as {
