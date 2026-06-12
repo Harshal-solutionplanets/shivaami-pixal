@@ -180,6 +180,7 @@ export async function POST(req: NextRequest) {
           <tr><td style="padding:4px 0;color:#5F6368">Billing Address</td><td>${form.billingAddress}</td></tr>
           ${form.gstNumber ? `<tr><td style="padding:4px 0;color:#5F6368">GST</td><td>${form.gstNumber}</td></tr>` : ""}
           <tr><td style="padding:4px 0;color:#5F6368">Payment</td><td>${form.paymentMode === "pay_now" ? "✅ Paid via Razorpay" : "📄 Invoice Requested"}</td></tr>
+          ${body.razorpayPaymentId ? `<tr><td style="padding:4px 0;color:#5F6368">Payment ID</td><td>${body.razorpayPaymentId}</td></tr>` : ""}
           ${form.notes ? `<tr><td style="padding:4px 0;color:#5F6368">Notes</td><td>${form.notes}</td></tr>` : ""}
         </table>
         <h2 style="font-size:15px;color:#5F6368;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 16px">Devices Ordered (${summary.totalQty})</h2>
