@@ -178,12 +178,9 @@ export default function PricingEditor({ initialRows }: PricingEditorProps) {
         <div>
           <h2 className="text-lg font-bold text-foreground">Product Pricing</h2>
           <p className="text-sm text-muted-foreground mt-0.5">
-            Changes take effect immediately on the marketplace — no deployment required.
+            Changes take effect immediately on the marketplace.
           </p>
         </div>
-        <span className="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-3 py-1.5 rounded-full font-medium">
-          Live DB — changes go live instantly
-        </span>
       </div>
 
       {initialRows.map((row) => (
