@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import { MessageCircle, Mail, Phone, ArrowRight, Send, Sparkles, Star, Headphones } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useRouter } from "next/navigation";
 
 export default function ContactCTA() {
+  const router = useRouter();
   const [form, setForm] = useState({
     name: "",
     company: "",
@@ -74,9 +76,16 @@ export default function ContactCTA() {
           });
         }
 
-        setSent(true);
         recaptchaRef.current?.reset();
         setCaptchaToken(null);
+        setForm({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+        router.push("/enquiry-confirmation");
       } catch (err: any) {
         setApiError(err.message || "Failed to submit enquiry.");
         recaptchaRef.current?.reset();
