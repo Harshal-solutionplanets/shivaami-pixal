@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
 import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import BrandText from "@/components/ui/BrandText";
@@ -10,6 +10,24 @@ import { cn } from "@/lib/utils";
 import { Sparkles } from "lucide-react";
 
 function EnquiryConfirmationContent() {
+  const [isVerified, setIsVerified] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isLegit = sessionStorage.getItem("legit_enquiry_success");
+      if (!isLegit) {
+        window.location.replace("/not-found");
+      } else {
+        sessionStorage.removeItem("legit_enquiry_success");
+        setIsVerified(true);
+      }
+    }
+  }, []);
+
+  if (isVerified === null) {
+    return <div className="min-h-screen bg-background" />;
+  }
+
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-16">
       <div className="max-w-lg w-full text-center">

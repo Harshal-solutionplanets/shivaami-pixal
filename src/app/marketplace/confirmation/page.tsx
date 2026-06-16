@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
@@ -17,12 +17,30 @@ const NEXT_STEPS = [
 ];
 
 function ConfirmationContent() {
+  const [isVerified, setIsVerified] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isLegit = sessionStorage.getItem("legit_order_success");
+      if (!isLegit) {
+        window.location.replace("/not-found");
+      } else {
+        sessionStorage.removeItem("legit_order_success");
+        setIsVerified(true);
+      }
+    }
+  }, []);
+
   const searchParams = useSearchParams();
   const orderId = searchParams.get("order");
   const shortId = orderId ? orderId.slice(0, 8).toUpperCase() : "—";
   const waMessage = encodeURIComponent(
     `Hi, I just placed a B2B Pixel order on tax print & shivaami. My order ID is ${shortId}.`
   );
+
+  if (isVerified === null) {
+    return <div className="min-h-screen bg-background" />;
+  }
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-16">

@@ -85,6 +85,9 @@ export default function ContactCTA() {
           phone: "",
           message: "",
         });
+        if (typeof window !== "undefined") {
+          sessionStorage.setItem("legit_enquiry_success", "true");
+        }
         router.push("/enquiry-confirmation");
       } catch (err: any) {
         setApiError(err.message || "Failed to submit enquiry.");

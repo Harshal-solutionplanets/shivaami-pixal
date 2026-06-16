@@ -144,9 +144,12 @@ export default function MarketplaceClient({ products, retailPrices, savingsValue
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         retailPrices={effectiveRetailPrices}
-        onSuccess={(orderId) =>
-          router.push(`/marketplace/confirmation?order=${orderId}`)
-        }
+        onSuccess={(orderId) => {
+          if (typeof window !== "undefined") {
+            sessionStorage.setItem("legit_order_success", "true");
+          }
+          router.push(`/marketplace/confirmation?order=${orderId}`);
+        }}
       />
     </CartProvider>
   );
